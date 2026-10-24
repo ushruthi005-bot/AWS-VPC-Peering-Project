@@ -1,0 +1,1082 @@
+<!doctype html>
+<html lang="en-US" prefix="og: https://ogp.me/ns#" class="no-js" itemtype="https://schema.org/Blog" itemscope>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+	<meta name='ir-site-verification-token' value='-1715761812'>
+    
+<!-- Search Engine Optimization by Rank Math PRO - https://rankmath.com/ -->
+<title>How to Create AWS VPC Peering Connection Step-by-Step | NetworkProGuide</title>
+<meta name="description" content="VPC peering allows you to connect two VPCs in the same or different AWS accounts. It operates over the AWS network backbone, ensuring low-latency and"/>
+<meta name="robots" content="follow, index, max-snippet:-1, max-video-preview:-1, max-image-preview:large"/>
+<link rel="canonical" href="https://networkproguide.com/create-aws-vpc-peering-connection/" />
+<meta property="og:locale" content="en_US" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="How to Create AWS VPC Peering Connection Step-by-Step | NetworkProGuide" />
+<meta property="og:description" content="VPC peering allows you to connect two VPCs in the same or different AWS accounts. It operates over the AWS network backbone, ensuring low-latency and" />
+<meta property="og:url" content="https://networkproguide.com/create-aws-vpc-peering-connection/" />
+<meta property="og:site_name" content="NetworkProGuide" />
+<meta property="article:publisher" content="https://www.facebook.com/networkproguide" />
+<meta property="article:tag" content="AWS" />
+<meta property="article:tag" content="Cloud" />
+<meta property="article:tag" content="VPC" />
+<meta property="article:section" content="Networking" />
+<meta property="og:updated_time" content="2024-05-31T07:11:56-05:00" />
+<meta property="og:image" content="https://networkproguide.com/wp-content/uploads/aws-accepting-vpc-connection-request.png" />
+<meta property="og:image:secure_url" content="https://networkproguide.com/wp-content/uploads/aws-accepting-vpc-connection-request.png" />
+<meta property="og:image:width" content="1600" />
+<meta property="og:image:height" content="825" />
+<meta property="og:image:alt" content="How to Create AWS VPC Peering Connection Step-by-Step" />
+<meta property="og:image:type" content="image/png" />
+<meta property="article:modified_time" content="2024-05-31T07:11:56-05:00" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="How to Create AWS VPC Peering Connection Step-by-Step | NetworkProGuide" />
+<meta name="twitter:description" content="VPC peering allows you to connect two VPCs in the same or different AWS accounts. It operates over the AWS network backbone, ensuring low-latency and" />
+<meta name="twitter:image" content="https://networkproguide.com/wp-content/uploads/aws-accepting-vpc-connection-request.png" />
+<script type="application/ld+json" class="rank-math-schema-pro">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://networkproguide.com/#organization","name":"NetworkProGuide","url":"https://networkproguide.com","sameAs":["https://www.facebook.com/networkproguide","https://mastodon.social/@networkproguide","https://twitter.com/networkproguide"],"logo":{"@type":"ImageObject","@id":"https://networkproguide.com/#logo","url":"https://networkproguide.com/wp-content/uploads/NPG-Logo-fav.png","contentUrl":"https://networkproguide.com/wp-content/uploads/NPG-Logo-fav.png","caption":"NetworkProGuide","inLanguage":"en-US","width":"512","height":"512"}},{"@type":"WebSite","@id":"https://networkproguide.com/#website","url":"https://networkproguide.com","name":"NetworkProGuide","alternateName":"NPG","publisher":{"@id":"https://networkproguide.com/#organization"},"inLanguage":"en-US"},{"@type":"ImageObject","@id":"https://networkproguide.com/wp-content/uploads/aws-accepting-vpc-connection-request.png","url":"https://networkproguide.com/wp-content/uploads/aws-accepting-vpc-connection-request.png","width":"1600","height":"825","inLanguage":"en-US"},{"@type":"BreadcrumbList","@id":"https://networkproguide.com/create-aws-vpc-peering-connection/#breadcrumb","itemListElement":[{"@type":"ListItem","position":"1","item":{"@id":"https://networkproguide.com","name":"Home"}},{"@type":"ListItem","position":"2","item":{"@id":"https://networkproguide.com/category/networking/","name":"Networking"}},{"@type":"ListItem","position":"3","item":{"@id":"https://networkproguide.com/create-aws-vpc-peering-connection/","name":"How to Create AWS VPC Peering Connection Step-by-Step"}}]},{"@type":"WebPage","@id":"https://networkproguide.com/create-aws-vpc-peering-connection/#webpage","url":"https://networkproguide.com/create-aws-vpc-peering-connection/","name":"How to Create AWS VPC Peering Connection Step-by-Step | NetworkProGuide","datePublished":"2023-08-03T23:59:43-05:00","dateModified":"2024-05-31T07:11:56-05:00","isPartOf":{"@id":"https://networkproguide.com/#website"},"primaryImageOfPage":{"@id":"https://networkproguide.com/wp-content/uploads/aws-accepting-vpc-connection-request.png"},"inLanguage":"en-US","breadcrumb":{"@id":"https://networkproguide.com/create-aws-vpc-peering-connection/#breadcrumb"}},{"@type":"Person","@id":"https://networkproguide.com/author/akrur/","name":"Akrur Neupane","url":"https://networkproguide.com/author/akrur/","image":{"@type":"ImageObject","@id":"https://networkproguide.com/wp-content/uploads/Default-Avatar.png","url":"https://networkproguide.com/wp-content/uploads/Default-Avatar.png","caption":"Akrur Neupane","inLanguage":"en-US"},"sameAs":["https://www.linkedin.com/in/neupaneakrur/","https://github.com/neupaneakrur"],"worksFor":{"@id":"https://networkproguide.com/#organization"}},{"@type":"BlogPosting","headline":"How to Create AWS VPC Peering Connection Step-by-Step | NetworkProGuide","datePublished":"2023-08-03T23:59:43-05:00","dateModified":"2024-05-31T07:11:56-05:00","articleSection":"Networking","author":{"@id":"https://networkproguide.com/author/akrur/","name":"Akrur Neupane"},"publisher":{"@id":"https://networkproguide.com/#organization"},"description":"VPC peering allows you to connect two VPCs in the same or different AWS accounts. It operates over the AWS network backbone, ensuring low-latency and","name":"How to Create AWS VPC Peering Connection Step-by-Step | NetworkProGuide","@id":"https://networkproguide.com/create-aws-vpc-peering-connection/#richSnippet","isPartOf":{"@id":"https://networkproguide.com/create-aws-vpc-peering-connection/#webpage"},"image":{"@id":"https://networkproguide.com/wp-content/uploads/aws-accepting-vpc-connection-request.png"},"inLanguage":"en-US","mainEntityOfPage":{"@id":"https://networkproguide.com/create-aws-vpc-peering-connection/#webpage"}}]}</script>
+<!-- /Rank Math WordPress SEO plugin -->
+
+<link rel='dns-prefetch' href='//static.addtoany.com' />
+<link rel='dns-prefetch' href='//scripts.scriptwrapper.com' />
+<link rel='dns-prefetch' href='//www.google-analytics.com' />
+<link rel='dns-prefetch' href='//www.googletagmanager.com' />
+<link rel="alternate" type="application/rss+xml" title="NetworkProGuide &raquo; Feed" href="https://networkproguide.com/feed/" />
+<link rel="alternate" type="application/rss+xml" title="NetworkProGuide &raquo; Comments Feed" href="https://networkproguide.com/comments/feed/" />
+			<script>document.documentElement.classList.remove( 'no-js' );</script>
+			<link rel="alternate" type="application/rss+xml" title="NetworkProGuide &raquo; How to Create AWS VPC Peering Connection Step-by-Step Comments Feed" href="https://networkproguide.com/create-aws-vpc-peering-connection/feed/" />
+<link rel="alternate" title="oEmbed (JSON)" type="application/json+oembed" href="https://networkproguide.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fnetworkproguide.com%2Fcreate-aws-vpc-peering-connection%2F" />
+<link rel="alternate" title="oEmbed (XML)" type="text/xml+oembed" href="https://networkproguide.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fnetworkproguide.com%2Fcreate-aws-vpc-peering-connection%2F&#038;format=xml" />
+<style id="wp-img-auto-sizes-contain-inline-css">
+img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
+/*# sourceURL=wp-img-auto-sizes-contain-inline-css */
+</style>
+ 
+<style id="wp-block-library-inline-css">
+:root{--wp-block-synced-color:#7a00df;--wp-block-synced-color--rgb:122,0,223;--wp-bound-block-color:var(--wp-block-synced-color);--wp-editor-canvas-background:#ddd;--wp-admin-theme-color:#007cba;--wp-admin-theme-color--rgb:0,124,186;--wp-admin-theme-color-darker-10:#006ba1;--wp-admin-theme-color-darker-10--rgb:0,107,160.5;--wp-admin-theme-color-darker-20:#005a87;--wp-admin-theme-color-darker-20--rgb:0,90,135;--wp-admin-border-width-focus:2px}@media (min-resolution:192dpi){:root{--wp-admin-border-width-focus:1.5px}}.wp-element-button{cursor:pointer}:root .has-very-light-gray-background-color{background-color:#eee}:root .has-very-dark-gray-background-color{background-color:#313131}:root .has-very-light-gray-color{color:#eee}:root .has-very-dark-gray-color{color:#313131}:root .has-vivid-green-cyan-to-vivid-cyan-blue-gradient-background{background:linear-gradient(135deg,#00d084,#0693e3)}:root .has-purple-crush-gradient-background{background:linear-gradient(135deg,#34e2e4,#4721fb 50%,#ab1dfe)}:root .has-hazy-dawn-gradient-background{background:linear-gradient(135deg,#faaca8,#dad0ec)}:root .has-subdued-olive-gradient-background{background:linear-gradient(135deg,#fafae1,#67a671)}:root .has-atomic-cream-gradient-background{background:linear-gradient(135deg,#fdd79a,#004a59)}:root .has-nightshade-gradient-background{background:linear-gradient(135deg,#330968,#31cdcf)}:root .has-midnight-gradient-background{background:linear-gradient(135deg,#020381,#2874fc)}:root{--wp--preset--font-size--normal:16px;--wp--preset--font-size--huge:42px}.has-regular-font-size{font-size:1em}.has-larger-font-size{font-size:2.625em}.has-normal-font-size{font-size:var(--wp--preset--font-size--normal)}.has-huge-font-size{font-size:var(--wp--preset--font-size--huge)}:root .has-text-align-center{text-align:center}:root .has-text-align-left{text-align:left}:root .has-text-align-right{text-align:right}.has-fit-text{white-space:nowrap!important}#end-resizable-editor-section{display:none}.aligncenter{clear:both}.items-justified-left{justify-content:flex-start}.items-justified-center{justify-content:center}.items-justified-right{justify-content:flex-end}.items-justified-space-between{justify-content:space-between}.screen-reader-text{word-wrap:normal!important;border:0;clip-path:inset(50%);height:1px;margin:-1px;overflow:hidden;padding:0;position:absolute;width:1px;word-break:normal!important}.screen-reader-text:focus{background-color:#ddd;clip-path:none;color:#444;display:block;font-size:1em;height:auto;left:5px;line-height:normal;padding:15px 23px 14px;text-decoration:none;top:5px;width:auto;z-index:100000}html :where(.has-border-color){border-style:solid}html :where([style^=border-color],[style*=";border-color"],[style*="; border-color"]){border-style:solid}html :where([style^=border-top-color],[style*=";border-top-color"],[style*="; border-top-color"]){border-top-style:solid}html :where([style^=border-right-color],[style*=";border-right-color"],[style*="; border-right-color"]){border-right-style:solid}html :where([style^=border-bottom-color],[style*=";border-bottom-color"],[style*="; border-bottom-color"]){border-bottom-style:solid}html :where([style^=border-left-color],[style*=";border-left-color"],[style*="; border-left-color"]){border-left-style:solid}html :where([style^=border-width],[style*=";border-width"],[style*="; border-width"]){border-style:solid}html :where([style^=border-top-width],[style*=";border-top-width"],[style*="; border-top-width"]){border-top-style:solid}html :where([style^=border-right-width],[style*=";border-right-width"],[style*="; border-right-width"]){border-right-style:solid}html :where([style^=border-bottom-width],[style*=";border-bottom-width"],[style*="; border-bottom-width"]){border-bottom-style:solid}html :where([style^=border-left-width],[style*=";border-left-width"],[style*="; border-left-width"]){border-left-style:solid}html :where(img[class*=wp-image-]){height:auto;max-width:100%}:where(figure){margin:0 0 1em}html :where(.is-position-sticky){--wp-admin--admin-bar--position-offset:var(--wp-admin--admin-bar--height,0px)}@media screen and (max-width:600px){html :where(.is-position-sticky){--wp-admin--admin-bar--position-offset:0px}}
+
+/*# sourceURL=/wp-includes/css/dist/block-library/common.min.css */
+</style>
+<style id="wp-block-heading-inline-css">
+h1:where(.wp-block-heading).has-background,h2:where(.wp-block-heading).has-background,h3:where(.wp-block-heading).has-background,h4:where(.wp-block-heading).has-background,h5:where(.wp-block-heading).has-background,h6:where(.wp-block-heading).has-background{padding:1.25em 2.375em}h1.has-text-align-left[style*=writing-mode]:where([style*=vertical-lr]),h1.has-text-align-right[style*=writing-mode]:where([style*=vertical-rl]),h2.has-text-align-left[style*=writing-mode]:where([style*=vertical-lr]),h2.has-text-align-right[style*=writing-mode]:where([style*=vertical-rl]),h3.has-text-align-left[style*=writing-mode]:where([style*=vertical-lr]),h3.has-text-align-right[style*=writing-mode]:where([style*=vertical-rl]),h4.has-text-align-left[style*=writing-mode]:where([style*=vertical-lr]),h4.has-text-align-right[style*=writing-mode]:where([style*=vertical-rl]),h5.has-text-align-left[style*=writing-mode]:where([style*=vertical-lr]),h5.has-text-align-right[style*=writing-mode]:where([style*=vertical-rl]),h6.has-text-align-left[style*=writing-mode]:where([style*=vertical-lr]),h6.has-text-align-right[style*=writing-mode]:where([style*=vertical-rl]){rotate:180deg}
+/*# sourceURL=https://networkproguide.com/wp-includes/blocks/heading/style.min.css */
+</style>
+<style id="wp-block-image-inline-css">
+.wp-block-image>a,.wp-block-image>figure>a{display:inline-block}.wp-block-image img{box-sizing:border-box;height:auto;max-width:100%;vertical-align:bottom}@media not (prefers-reduced-motion){.wp-block-image img.hide{visibility:hidden}.wp-block-image img.show{animation:show-content-image .4s}}.wp-block-image[style*=border-radius] img,.wp-block-image[style*=border-radius]>a{border-radius:inherit}.wp-block-image.has-custom-border img{box-sizing:border-box}.wp-block-image.aligncenter{text-align:center}.wp-block-image.alignfull>a,.wp-block-image.alignwide>a{width:100%}.wp-block-image.alignfull img,.wp-block-image.alignwide img{height:auto;width:100%}.wp-block-image .aligncenter,.wp-block-image .alignleft,.wp-block-image .alignright,.wp-block-image.aligncenter,.wp-block-image.alignleft,.wp-block-image.alignright{display:table}.wp-block-image .aligncenter>figcaption,.wp-block-image .alignleft>figcaption,.wp-block-image .alignright>figcaption,.wp-block-image.aligncenter>figcaption,.wp-block-image.alignleft>figcaption,.wp-block-image.alignright>figcaption{caption-side:bottom;display:table-caption}.wp-block-image .alignleft{float:left;margin:.5em 1em .5em 0}.wp-block-image .alignright{float:right;margin:.5em 0 .5em 1em}.wp-block-image .aligncenter{margin-left:auto;margin-right:auto}.wp-block-image :where(figcaption){margin-bottom:1em;margin-top:.5em}.wp-block-image.is-style-circle-mask img{border-radius:9999px}@supports ((-webkit-mask-image:none) or (mask-image:none)) or (-webkit-mask-image:none){.wp-block-image.is-style-circle-mask img{border-radius:0;-webkit-mask-image:url('data:image/svg+xml;utf8,<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="50"/></svg>');mask-image:url('data:image/svg+xml;utf8,<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="50"/></svg>');mask-mode:alpha;-webkit-mask-position:center;mask-position:center;-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;-webkit-mask-size:contain;mask-size:contain}}:root :where(.wp-block-image.is-style-rounded img,.wp-block-image .is-style-rounded img){border-radius:9999px}.wp-block-image figure{margin:0}.wp-lightbox-container{display:flex;flex-direction:column;position:relative}.wp-lightbox-container img{cursor:zoom-in}.wp-lightbox-container img:hover+button{opacity:1}.wp-lightbox-container button{align-items:center;backdrop-filter:blur(16px) saturate(180%);background-color:rgba(90,90,90,.25);border:none;border-radius:4px;cursor:zoom-in;display:flex;height:20px;justify-content:center;opacity:0;padding:0;position:absolute;right:16px;text-align:center;top:16px;width:20px;z-index:100}@media not (prefers-reduced-motion){.wp-lightbox-container button{transition:opacity .2s ease}}.wp-lightbox-container button:focus-visible{outline:3px auto rgba(90,90,90,.25);outline:3px auto -webkit-focus-ring-color;outline-offset:3px}.wp-lightbox-container button:hover{cursor:pointer;opacity:1}.wp-lightbox-container button:focus{opacity:1}.wp-lightbox-container button:focus,.wp-lightbox-container button:hover,.wp-lightbox-container button:not(:hover):not(:active):not(.has-background){background-color:rgba(90,90,90,.25);border:none}.wp-lightbox-overlay{box-sizing:border-box;cursor:zoom-out;height:100vh;left:0;overflow:hidden;position:fixed;top:0;visibility:hidden;width:100%;z-index:100000}.wp-lightbox-overlay .wp-lightbox-close-button{align-items:center;cursor:pointer;display:flex;font-family:inherit;gap:8px;justify-content:center;line-height:1;min-height:40px;min-width:40px;padding:0 4px;position:absolute;right:calc(env(safe-area-inset-right) + 16px);top:calc(env(safe-area-inset-top) + 16px);z-index:5000000}.wp-lightbox-overlay .wp-lightbox-close-button:focus,.wp-lightbox-overlay .wp-lightbox-close-button:hover,.wp-lightbox-overlay .wp-lightbox-close-button:not(:hover):not(:active):not(.has-background){background:none;border:none}.wp-lightbox-overlay .wp-lightbox-close-button:has(.wp-lightbox-close-text:not([hidden])) .wp-lightbox-close-icon svg{height:1em;width:1em}.wp-lightbox-overlay .wp-lightbox-close-icon svg{display:block}.wp-lightbox-overlay .wp-lightbox-navigation-button-next,.wp-lightbox-overlay .wp-lightbox-navigation-button-prev{align-items:center;bottom:16px;cursor:pointer;display:flex;font-family:inherit;gap:4px;justify-content:center;line-height:1;min-height:40px;min-width:40px;padding:0 8px;position:absolute;z-index:2000002}.wp-lightbox-overlay .wp-lightbox-navigation-button-next[hidden],.wp-lightbox-overlay .wp-lightbox-navigation-button-prev[hidden]{display:none}@media (min-width:960px){.wp-lightbox-overlay .wp-lightbox-navigation-button-next,.wp-lightbox-overlay .wp-lightbox-navigation-button-prev{bottom:50%;transform:translateY(-50%)}}.wp-lightbox-overlay .wp-lightbox-navigation-button-next:focus,.wp-lightbox-overlay .wp-lightbox-navigation-button-next:hover,.wp-lightbox-overlay .wp-lightbox-navigation-button-next:not(:hover):not(:active):not(.has-background),.wp-lightbox-overlay .wp-lightbox-navigation-button-prev:focus,.wp-lightbox-overlay .wp-lightbox-navigation-button-prev:hover,.wp-lightbox-overlay .wp-lightbox-navigation-button-prev:not(:hover):not(:active):not(.has-background){background:none;border:none;padding:0 8px}.wp-lightbox-overlay .wp-lightbox-navigation-button-next:has(.wp-lightbox-navigation-text:not([hidden])) .wp-lightbox-navigation-icon svg,.wp-lightbox-overlay .wp-lightbox-navigation-button-prev:has(.wp-lightbox-navigation-text:not([hidden])) .wp-lightbox-navigation-icon svg{display:block;height:1.5em;width:1.5em}.wp-lightbox-overlay .wp-lightbox-navigation-button-prev{left:calc(env(safe-area-inset-left) + 16px)}.wp-lightbox-overlay .wp-lightbox-navigation-button-next{right:calc(env(safe-area-inset-right) + 16px)}.wp-lightbox-overlay .wp-lightbox-navigation-icon svg{vertical-align:middle}.wp-lightbox-overlay .lightbox-image-container{height:var(--wp--lightbox-container-height);left:50%;overflow:hidden;position:absolute;top:50%;transform:translate(-50%,-50%);transform-origin:top left;width:var(--wp--lightbox-container-width);z-index:2000001}.wp-lightbox-overlay .wp-block-image{align-items:center;box-sizing:border-box;display:flex;height:100%;justify-content:center;margin:0;position:relative;transform-origin:0 0;width:100%;z-index:3000000}.wp-lightbox-overlay .wp-block-image img{height:var(--wp--lightbox-image-height);min-height:var(--wp--lightbox-image-height);min-width:var(--wp--lightbox-image-width);width:var(--wp--lightbox-image-width)}.wp-lightbox-overlay .wp-block-image figcaption{display:none}.wp-lightbox-overlay button{background:none;border:none}.wp-lightbox-overlay .scrim{background-color:#fff;height:100%;opacity:.9;position:absolute;width:100%;z-index:2000000}.wp-lightbox-overlay.active{visibility:visible}@media not (prefers-reduced-motion){.wp-lightbox-overlay.active{animation:turn-on-visibility .25s both}.wp-lightbox-overlay.active img{animation:turn-on-visibility .35s both}.wp-lightbox-overlay.show-closing-animation:not(.active){animation:turn-off-visibility .35s both}.wp-lightbox-overlay.show-closing-animation:not(.active) img{animation:turn-off-visibility .25s both}.wp-lightbox-overlay.zoom.active{animation:none;opacity:1;visibility:visible}.wp-lightbox-overlay.zoom.active .lightbox-image-container{animation:lightbox-zoom-in .4s}.wp-lightbox-overlay.zoom.active .lightbox-image-container img{animation:none}.wp-lightbox-overlay.zoom.active .scrim{animation:turn-on-visibility .4s forwards}.wp-lightbox-overlay.zoom.show-closing-animation:not(.active){animation:none}.wp-lightbox-overlay.zoom.show-closing-animation:not(.active) .lightbox-image-container{animation:lightbox-zoom-out .4s}.wp-lightbox-overlay.zoom.show-closing-animation:not(.active) .lightbox-image-container img{animation:none}.wp-lightbox-overlay.zoom.show-closing-animation:not(.active) .scrim{animation:turn-off-visibility .4s forwards}}@keyframes show-content-image{0%{visibility:hidden}99%{visibility:hidden}to{visibility:visible}}@keyframes turn-on-visibility{0%{opacity:0}to{opacity:1}}@keyframes turn-off-visibility{0%{opacity:1;visibility:visible}99%{opacity:0;visibility:visible}to{opacity:0;visibility:hidden}}@keyframes lightbox-zoom-in{0%{transform:translate(calc((-100vw + var(--wp--lightbox-scrollbar-width))/2 + var(--wp--lightbox-initial-left-position)),calc(-50vh + var(--wp--lightbox-initial-top-position))) scale(var(--wp--lightbox-scale))}to{transform:translate(-50%,-50%) scale(1)}}@keyframes lightbox-zoom-out{0%{transform:translate(-50%,-50%) scale(1);visibility:visible}99%{visibility:visible}to{transform:translate(calc((-100vw + var(--wp--lightbox-scrollbar-width))/2 + var(--wp--lightbox-initial-left-position)),calc(-50vh + var(--wp--lightbox-initial-top-position))) scale(var(--wp--lightbox-scale));visibility:hidden}}
+/*# sourceURL=https://networkproguide.com/wp-includes/blocks/image/style.min.css */
+</style>
+<style id="wp-block-list-inline-css">
+ol,ul{box-sizing:border-box}:root :where(.wp-block-list.has-background){padding:1.25em 2.375em}
+/*# sourceURL=https://networkproguide.com/wp-includes/blocks/list/style.min.css */
+</style>
+<style id="wp-block-paragraph-inline-css">
+.is-small-text{font-size:.875em}.is-regular-text{font-size:1em}.is-large-text{font-size:2.25em}.is-larger-text{font-size:3em}.has-drop-cap:not(:focus):first-letter{float:left;font-size:8.4em;font-style:normal;font-weight:100;line-height:.68;margin:.05em .1em 0 0;text-transform:uppercase}body.rtl .has-drop-cap:not(:focus):first-letter{float:none;margin-left:.1em}p.has-drop-cap.has-background{overflow:hidden}:root :where(p.has-background){padding:1.25em 2.375em}:where(p.has-text-color:not(.has-link-color)) a{color:inherit}p.has-text-align-left[style*="writing-mode:vertical-lr"],p.has-text-align-right[style*="writing-mode:vertical-rl"]{rotate:180deg}
+/*# sourceURL=https://networkproguide.com/wp-includes/blocks/paragraph/style.min.css */
+</style>
+<style id="wp-block-tag-cloud-inline-css">
+.wp-block-tag-cloud{box-sizing:border-box}.wp-block-tag-cloud.aligncenter{justify-content:center;text-align:center}.wp-block-tag-cloud a{display:inline-block;margin-right:5px}.wp-block-tag-cloud span{display:inline-block;margin-left:5px;text-decoration:none}:root :where(.wp-block-tag-cloud.is-style-outline){display:flex;flex-wrap:wrap;gap:1ch}:root :where(.wp-block-tag-cloud.is-style-outline a){border:1px solid;font-size:unset!important;margin-right:0;padding:1ch 2ch;text-decoration:none!important}
+/*# sourceURL=https://networkproguide.com/wp-includes/blocks/tag-cloud/style.min.css */
+</style>
+<style id="wp-block-group-inline-css">
+.wp-block-group{box-sizing:border-box}:where(.wp-block-group.wp-block-group-is-layout-constrained){position:relative}
+/*# sourceURL=https://networkproguide.com/wp-includes/blocks/group/style.min.css */
+</style>
+<style id="wp-block-preformatted-inline-css">
+.wp-block-preformatted{box-sizing:border-box;white-space:pre-wrap}:where(.wp-block-preformatted.has-background){padding:1.25em 2.375em}
+/*# sourceURL=https://networkproguide.com/wp-includes/blocks/preformatted/style.min.css */
+</style>
+
+<style id="classic-theme-styles-inline-css">
+/*! This file is auto-generated */
+.wp-block-button__link{color:#fff;background-color:#32373c;border-radius:9999px;box-shadow:none;text-decoration:none;padding:calc(.667em + 2px) calc(1.333em + 2px);font-size:1.125em}.wp-block-file__button{background:#32373c;color:#fff;text-decoration:none}
+/*# sourceURL=/wp-includes/css/classic-themes.min.css */
+</style>
+
+<style id="global-styles-inline-css">
+:root{--wp--preset--aspect-ratio--square: 1;--wp--preset--aspect-ratio--4-3: 4/3;--wp--preset--aspect-ratio--3-4: 3/4;--wp--preset--aspect-ratio--3-2: 3/2;--wp--preset--aspect-ratio--2-3: 2/3;--wp--preset--aspect-ratio--16-9: 16/9;--wp--preset--aspect-ratio--9-16: 9/16;--wp--preset--color--black: #000000;--wp--preset--color--cyan-bluish-gray: #abb8c3;--wp--preset--color--white: #ffffff;--wp--preset--color--pale-pink: #f78da7;--wp--preset--color--vivid-red: #cf2e2e;--wp--preset--color--luminous-vivid-orange: #ff6900;--wp--preset--color--luminous-vivid-amber: #fcb900;--wp--preset--color--light-green-cyan: #7bdcb5;--wp--preset--color--vivid-green-cyan: #00d084;--wp--preset--color--pale-cyan-blue: #8ed1fc;--wp--preset--color--vivid-cyan-blue: #0693e3;--wp--preset--color--vivid-purple: #9b51e0;--wp--preset--color--theme-palette-1: var(--global-palette1);--wp--preset--color--theme-palette-2: var(--global-palette2);--wp--preset--color--theme-palette-3: var(--global-palette3);--wp--preset--color--theme-palette-4: var(--global-palette4);--wp--preset--color--theme-palette-5: var(--global-palette5);--wp--preset--color--theme-palette-6: var(--global-palette6);--wp--preset--color--theme-palette-7: var(--global-palette7);--wp--preset--color--theme-palette-8: var(--global-palette8);--wp--preset--color--theme-palette-9: var(--global-palette9);--wp--preset--color--theme-palette-10: var(--global-palette10);--wp--preset--color--theme-palette-11: var(--global-palette11);--wp--preset--color--theme-palette-12: var(--global-palette12);--wp--preset--color--theme-palette-13: var(--global-palette13);--wp--preset--color--theme-palette-14: var(--global-palette14);--wp--preset--color--theme-palette-15: var(--global-palette15);--wp--preset--color--palette-1: #0092e8;--wp--preset--color--palette-2: #2b6cb0;--wp--preset--color--palette-3: #1A202C;--wp--preset--color--palette-4: #2D3748;--wp--preset--color--palette-5: #4A5568;--wp--preset--color--palette-6: #718096;--wp--preset--color--palette-7: rgba(237,242,247,0.98);--wp--preset--color--palette-8: #F7FAFC;--wp--preset--color--palette-9: #ffffff;--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple: linear-gradient(135deg,rgb(6,147,227) 0%,rgb(155,81,224) 100%);--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan: linear-gradient(135deg,rgb(122,220,180) 0%,rgb(0,208,130) 100%);--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange: linear-gradient(135deg,rgb(252,185,0) 0%,rgb(255,105,0) 100%);--wp--preset--gradient--luminous-vivid-orange-to-vivid-red: linear-gradient(135deg,rgb(255,105,0) 0%,rgb(207,46,46) 100%);--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray: linear-gradient(135deg,rgb(238,238,238) 0%,rgb(169,184,195) 100%);--wp--preset--gradient--cool-to-warm-spectrum: linear-gradient(135deg,rgb(74,234,220) 0%,rgb(151,120,209) 20%,rgb(207,42,186) 40%,rgb(238,44,130) 60%,rgb(251,105,98) 80%,rgb(254,248,76) 100%);--wp--preset--gradient--blush-light-purple: linear-gradient(135deg,rgb(255,206,236) 0%,rgb(152,150,240) 100%);--wp--preset--gradient--blush-bordeaux: linear-gradient(135deg,rgb(254,205,165) 0%,rgb(254,45,45) 50%,rgb(107,0,62) 100%);--wp--preset--gradient--luminous-dusk: linear-gradient(135deg,rgb(255,203,112) 0%,rgb(199,81,192) 50%,rgb(65,88,208) 100%);--wp--preset--gradient--pale-ocean: linear-gradient(135deg,rgb(255,245,203) 0%,rgb(182,227,212) 50%,rgb(51,167,181) 100%);--wp--preset--gradient--electric-grass: linear-gradient(135deg,rgb(202,248,128) 0%,rgb(113,206,126) 100%);--wp--preset--gradient--midnight: linear-gradient(135deg,rgb(2,3,129) 0%,rgb(40,116,252) 100%);--wp--preset--font-size--small: var(--global-font-size-small);--wp--preset--font-size--medium: var(--global-font-size-medium);--wp--preset--font-size--large: var(--global-font-size-large);--wp--preset--font-size--x-large: 42px;--wp--preset--font-size--larger: var(--global-font-size-larger);--wp--preset--font-size--xxlarge: var(--global-font-size-xxlarge);--wp--preset--spacing--20: 0.44rem;--wp--preset--spacing--30: 0.67rem;--wp--preset--spacing--40: 1rem;--wp--preset--spacing--50: 1.5rem;--wp--preset--spacing--60: 2.25rem;--wp--preset--spacing--70: 3.38rem;--wp--preset--spacing--80: 5.06rem;--wp--preset--shadow--natural: 6px 6px 9px rgba(0, 0, 0, 0.2);--wp--preset--shadow--deep: 12px 12px 50px rgba(0, 0, 0, 0.4);--wp--preset--shadow--sharp: 6px 6px 0px rgba(0, 0, 0, 0.2);--wp--preset--shadow--outlined: 6px 6px 0px -3px rgb(255, 255, 255), 6px 6px rgb(0, 0, 0);--wp--preset--shadow--crisp: 6px 6px 0px rgb(0, 0, 0);}.wp-block-button{--wp--preset--dimension--25: 25%;--wp--preset--dimension--50: 50%;--wp--preset--dimension--75: 75%;--wp--preset--dimension--100: 100%;}:root { --wp--style--global--content-size: var(--global-calc-content-width);--wp--style--global--wide-size: var(--global-calc-wide-content-width); }:where(body) { margin: 0; }:where(.is-layout-flex){gap: 0.5em;}:where(.is-layout-grid){gap: 0.5em;}body .is-layout-flex{display: flex;}.is-layout-flex{flex-wrap: wrap;align-items: center;}.is-layout-flex > :is(*, div){margin: 0;}body .is-layout-grid{display: grid;}.is-layout-grid > :is(*, div){margin: 0;}body{padding-top: 0px;padding-right: 0px;padding-bottom: 0px;padding-left: 0px;}:root :where(.wp-element-button, .wp-block-button__link){font-style: inherit;font-weight: inherit;letter-spacing: inherit;text-transform: inherit;}.has-black-color{color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-color{color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-color{color: var(--wp--preset--color--white) !important;}.has-pale-pink-color{color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-color{color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-color{color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-color{color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-color{color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-color{color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-color{color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-color{color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-color{color: var(--wp--preset--color--vivid-purple) !important;}.has-theme-palette-1-color{color: var(--wp--preset--color--theme-palette-1) !important;}.has-theme-palette-2-color{color: var(--wp--preset--color--theme-palette-2) !important;}.has-theme-palette-3-color{color: var(--wp--preset--color--theme-palette-3) !important;}.has-theme-palette-4-color{color: var(--wp--preset--color--theme-palette-4) !important;}.has-theme-palette-5-color{color: var(--wp--preset--color--theme-palette-5) !important;}.has-theme-palette-6-color{color: var(--wp--preset--color--theme-palette-6) !important;}.has-theme-palette-7-color{color: var(--wp--preset--color--theme-palette-7) !important;}.has-theme-palette-8-color{color: var(--wp--preset--color--theme-palette-8) !important;}.has-theme-palette-9-color{color: var(--wp--preset--color--theme-palette-9) !important;}.has-theme-palette-10-color{color: var(--wp--preset--color--theme-palette-10) !important;}.has-theme-palette-11-color{color: var(--wp--preset--color--theme-palette-11) !important;}.has-theme-palette-12-color{color: var(--wp--preset--color--theme-palette-12) !important;}.has-theme-palette-13-color{color: var(--wp--preset--color--theme-palette-13) !important;}.has-theme-palette-14-color{color: var(--wp--preset--color--theme-palette-14) !important;}.has-theme-palette-15-color{color: var(--wp--preset--color--theme-palette-15) !important;}.has-palette-1-color{color: var(--wp--preset--color--palette-1) !important;}.has-palette-2-color{color: var(--wp--preset--color--palette-2) !important;}.has-palette-3-color{color: var(--wp--preset--color--palette-3) !important;}.has-palette-4-color{color: var(--wp--preset--color--palette-4) !important;}.has-palette-5-color{color: var(--wp--preset--color--palette-5) !important;}.has-palette-6-color{color: var(--wp--preset--color--palette-6) !important;}.has-palette-7-color{color: var(--wp--preset--color--palette-7) !important;}.has-palette-8-color{color: var(--wp--preset--color--palette-8) !important;}.has-palette-9-color{color: var(--wp--preset--color--palette-9) !important;}.has-black-background-color{background-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-background-color{background-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-background-color{background-color: var(--wp--preset--color--white) !important;}.has-pale-pink-background-color{background-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-background-color{background-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-background-color{background-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-background-color{background-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-background-color{background-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-background-color{background-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-background-color{background-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-background-color{background-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-background-color{background-color: var(--wp--preset--color--vivid-purple) !important;}.has-theme-palette-1-background-color{background-color: var(--wp--preset--color--theme-palette-1) !important;}.has-theme-palette-2-background-color{background-color: var(--wp--preset--color--theme-palette-2) !important;}.has-theme-palette-3-background-color{background-color: var(--wp--preset--color--theme-palette-3) !important;}.has-theme-palette-4-background-color{background-color: var(--wp--preset--color--theme-palette-4) !important;}.has-theme-palette-5-background-color{background-color: var(--wp--preset--color--theme-palette-5) !important;}.has-theme-palette-6-background-color{background-color: var(--wp--preset--color--theme-palette-6) !important;}.has-theme-palette-7-background-color{background-color: var(--wp--preset--color--theme-palette-7) !important;}.has-theme-palette-8-background-color{background-color: var(--wp--preset--color--theme-palette-8) !important;}.has-theme-palette-9-background-color{background-color: var(--wp--preset--color--theme-palette-9) !important;}.has-theme-palette-10-background-color{background-color: var(--wp--preset--color--theme-palette-10) !important;}.has-theme-palette-11-background-color{background-color: var(--wp--preset--color--theme-palette-11) !important;}.has-theme-palette-12-background-color{background-color: var(--wp--preset--color--theme-palette-12) !important;}.has-theme-palette-13-background-color{background-color: var(--wp--preset--color--theme-palette-13) !important;}.has-theme-palette-14-background-color{background-color: var(--wp--preset--color--theme-palette-14) !important;}.has-theme-palette-15-background-color{background-color: var(--wp--preset--color--theme-palette-15) !important;}.has-palette-1-background-color{background-color: var(--wp--preset--color--palette-1) !important;}.has-palette-2-background-color{background-color: var(--wp--preset--color--palette-2) !important;}.has-palette-3-background-color{background-color: var(--wp--preset--color--palette-3) !important;}.has-palette-4-background-color{background-color: var(--wp--preset--color--palette-4) !important;}.has-palette-5-background-color{background-color: var(--wp--preset--color--palette-5) !important;}.has-palette-6-background-color{background-color: var(--wp--preset--color--palette-6) !important;}.has-palette-7-background-color{background-color: var(--wp--preset--color--palette-7) !important;}.has-palette-8-background-color{background-color: var(--wp--preset--color--palette-8) !important;}.has-palette-9-background-color{background-color: var(--wp--preset--color--palette-9) !important;}.has-black-border-color{border-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-border-color{border-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-border-color{border-color: var(--wp--preset--color--white) !important;}.has-pale-pink-border-color{border-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-border-color{border-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-border-color{border-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-border-color{border-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-border-color{border-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-border-color{border-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-border-color{border-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-border-color{border-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-border-color{border-color: var(--wp--preset--color--vivid-purple) !important;}.has-theme-palette-1-border-color{border-color: var(--wp--preset--color--theme-palette-1) !important;}.has-theme-palette-2-border-color{border-color: var(--wp--preset--color--theme-palette-2) !important;}.has-theme-palette-3-border-color{border-color: var(--wp--preset--color--theme-palette-3) !important;}.has-theme-palette-4-border-color{border-color: var(--wp--preset--color--theme-palette-4) !important;}.has-theme-palette-5-border-color{border-color: var(--wp--preset--color--theme-palette-5) !important;}.has-theme-palette-6-border-color{border-color: var(--wp--preset--color--theme-palette-6) !important;}.has-theme-palette-7-border-color{border-color: var(--wp--preset--color--theme-palette-7) !important;}.has-theme-palette-8-border-color{border-color: var(--wp--preset--color--theme-palette-8) !important;}.has-theme-palette-9-border-color{border-color: var(--wp--preset--color--theme-palette-9) !important;}.has-theme-palette-10-border-color{border-color: var(--wp--preset--color--theme-palette-10) !important;}.has-theme-palette-11-border-color{border-color: var(--wp--preset--color--theme-palette-11) !important;}.has-theme-palette-12-border-color{border-color: var(--wp--preset--color--theme-palette-12) !important;}.has-theme-palette-13-border-color{border-color: var(--wp--preset--color--theme-palette-13) !important;}.has-theme-palette-14-border-color{border-color: var(--wp--preset--color--theme-palette-14) !important;}.has-theme-palette-15-border-color{border-color: var(--wp--preset--color--theme-palette-15) !important;}.has-palette-1-border-color{border-color: var(--wp--preset--color--palette-1) !important;}.has-palette-2-border-color{border-color: var(--wp--preset--color--palette-2) !important;}.has-palette-3-border-color{border-color: var(--wp--preset--color--palette-3) !important;}.has-palette-4-border-color{border-color: var(--wp--preset--color--palette-4) !important;}.has-palette-5-border-color{border-color: var(--wp--preset--color--palette-5) !important;}.has-palette-6-border-color{border-color: var(--wp--preset--color--palette-6) !important;}.has-palette-7-border-color{border-color: var(--wp--preset--color--palette-7) !important;}.has-palette-8-border-color{border-color: var(--wp--preset--color--palette-8) !important;}.has-palette-9-border-color{border-color: var(--wp--preset--color--palette-9) !important;}.has-vivid-cyan-blue-to-vivid-purple-gradient-background{background: var(--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple) !important;}.has-light-green-cyan-to-vivid-green-cyan-gradient-background{background: var(--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan) !important;}.has-luminous-vivid-amber-to-luminous-vivid-orange-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange) !important;}.has-luminous-vivid-orange-to-vivid-red-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-orange-to-vivid-red) !important;}.has-very-light-gray-to-cyan-bluish-gray-gradient-background{background: var(--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray) !important;}.has-cool-to-warm-spectrum-gradient-background{background: var(--wp--preset--gradient--cool-to-warm-spectrum) !important;}.has-blush-light-purple-gradient-background{background: var(--wp--preset--gradient--blush-light-purple) !important;}.has-blush-bordeaux-gradient-background{background: var(--wp--preset--gradient--blush-bordeaux) !important;}.has-luminous-dusk-gradient-background{background: var(--wp--preset--gradient--luminous-dusk) !important;}.has-pale-ocean-gradient-background{background: var(--wp--preset--gradient--pale-ocean) !important;}.has-electric-grass-gradient-background{background: var(--wp--preset--gradient--electric-grass) !important;}.has-midnight-gradient-background{background: var(--wp--preset--gradient--midnight) !important;}.has-small-font-size{font-size: var(--wp--preset--font-size--small) !important;}.has-medium-font-size{font-size: var(--wp--preset--font-size--medium) !important;}.has-large-font-size{font-size: var(--wp--preset--font-size--large) !important;}.has-x-large-font-size{font-size: var(--wp--preset--font-size--x-large) !important;}.has-larger-font-size{font-size: var(--wp--preset--font-size--larger) !important;}.has-xxlarge-font-size{font-size: var(--wp--preset--font-size--xxlarge) !important;}
+/*# sourceURL=global-styles-inline-css */
+</style>
+
+<link data-optimized="1" rel='stylesheet' id='parent-style-css' href='https://networkproguide.com/wp-content/litespeed/css/0b80f1a942967b9d974c99bda838143a.css?ver=da900' media='all' />
+<link data-optimized="1" rel='stylesheet' id='child-style-css' href='https://networkproguide.com/wp-content/litespeed/css/d41d8cd98f00b204e9800998ecf8427e.css?ver=fd5de' media='all' />
+<link data-optimized="1" rel='stylesheet' id='kadence-global-css' href='https://networkproguide.com/wp-content/litespeed/css/5a9a1b3222d2100334fdb31b7a808e56.css?ver=b92bf' media='all' />
+<style id="kadence-global-inline-css">
+/* Kadence Base CSS */
+:root{--global-palette1:#0092e8;--global-palette2:#2b6cb0;--global-palette3:#1A202C;--global-palette4:#2D3748;--global-palette5:#4A5568;--global-palette6:#718096;--global-palette7:rgba(237,242,247,0.98);--global-palette8:#F7FAFC;--global-palette9:#ffffff;--global-palette10:oklch(from var(--global-palette1) calc(l + 0.10 * (1 - l)) calc(c * 1.00) calc(h + 180) / 100%);--global-palette11:#13612e;--global-palette12:#1159af;--global-palette13:#b82105;--global-palette14:#f7630c;--global-palette15:#f5a524;--global-palette9rgb:255, 255, 255;--global-palette-highlight:#0092e8;--global-palette-highlight-alt:var(--global-palette2);--global-palette-highlight-alt2:var(--global-palette9);--global-palette-btn-bg:var(--global-palette1);--global-palette-btn-bg-hover:var(--global-palette2);--global-palette-btn:var(--global-palette9);--global-palette-btn-hover:var(--global-palette9);--global-palette-btn-sec-bg:var(--global-palette7);--global-palette-btn-sec-bg-hover:var(--global-palette2);--global-palette-btn-sec:var(--global-palette3);--global-palette-btn-sec-hover:var(--global-palette9);--global-body-font-family:'Open Sans', sans-serif;--global-heading-font-family:inherit;--global-primary-nav-font-family:inherit;--global-fallback-font:sans-serif;--global-display-fallback-font:sans-serif;--global-content-width:1290px;--global-content-wide-width:calc(1290px + 230px);--global-content-narrow-width:842px;--global-content-edge-padding:1.5rem;--global-content-boxed-padding:2rem;--global-calc-content-width:calc(1290px - var(--global-content-edge-padding) - var(--global-content-edge-padding) );--wp--style--global--content-size:var(--global-calc-content-width);}.wp-site-blocks{--global-vw:calc( 100vw - ( 0.5 * var(--scrollbar-offset)));}body{background:var(--global-palette8);}body, input, select, optgroup, textarea{font-style:normal;font-weight:normal;font-size:18px;line-height:1.5;font-family:var(--global-body-font-family);color:var(--global-palette4);}.content-bg, body.content-style-unboxed .site{background:var(--global-palette9);}h1,h2,h3,h4,h5,h6{font-family:var(--global-heading-font-family);}h1{font-style:normal;font-weight:700;font-size:32px;line-height:1.3;color:var(--global-palette3);}h2{font-style:normal;font-weight:700;font-size:28px;line-height:1.3;color:var(--global-palette3);}h3{font-weight:700;font-size:24px;line-height:1.5;color:var(--global-palette3);}h4{font-weight:700;font-size:22px;line-height:1.5;color:var(--global-palette4);}h5{font-weight:700;font-size:20px;line-height:1.5;color:var(--global-palette4);}h6{font-weight:700;font-size:18px;line-height:1.5;color:var(--global-palette5);}.entry-hero .kadence-breadcrumbs{max-width:1290px;}.site-container, .site-header-row-layout-contained, .site-footer-row-layout-contained, .entry-hero-layout-contained, .comments-area, .alignfull > .wp-block-cover__inner-container, .alignwide > .wp-block-cover__inner-container{max-width:var(--global-content-width);}.content-width-narrow .content-container.site-container, .content-width-narrow .hero-container.site-container{max-width:var(--global-content-narrow-width);}@media all and (min-width: 1520px){.wp-site-blocks .content-container  .alignwide{margin-left:-115px;margin-right:-115px;width:unset;max-width:unset;}}@media all and (min-width: 1102px){.content-width-narrow .wp-site-blocks .content-container .alignwide{margin-left:-130px;margin-right:-130px;width:unset;max-width:unset;}}.content-style-boxed .wp-site-blocks .entry-content .alignwide{margin-left:calc( -1 * var( --global-content-boxed-padding ) );margin-right:calc( -1 * var( --global-content-boxed-padding ) );}.content-area{margin-top:2rem;margin-bottom:2rem;}@media all and (max-width: 1024px){.content-area{margin-top:3rem;margin-bottom:3rem;}}@media all and (max-width: 767px){.content-area{margin-top:2rem;margin-bottom:2rem;}}@media all and (max-width: 1024px){:root{--global-content-boxed-padding:2rem;}}@media all and (max-width: 767px){:root{--global-content-boxed-padding:1.5rem;}}.entry-content-wrap{padding:2rem;}@media all and (max-width: 1024px){.entry-content-wrap{padding:2rem;}}@media all and (max-width: 767px){.entry-content-wrap{padding:1.5rem;}}.entry.single-entry{box-shadow:0px 15px 15px -10px rgba(0,0,0,0.05);border-radius:6px 6px 6px 6px;}.entry.loop-entry{border-radius:6px 6px 6px 6px;overflow:hidden;box-shadow:0px 15px 15px -10px rgba(0,0,0,0.05);}.loop-entry .entry-content-wrap{padding:2rem;}@media all and (max-width: 1024px){.loop-entry .entry-content-wrap{padding:2rem;}}@media all and (max-width: 767px){.loop-entry .entry-content-wrap{padding:1.5rem;}}.has-sidebar:not(.has-left-sidebar) .content-container{grid-template-columns:1fr 30%;}.has-sidebar.has-left-sidebar .content-container{grid-template-columns:30% 1fr;}.primary-sidebar.widget-area .widget{margin-bottom:1.5em;color:var(--global-palette4);}.primary-sidebar.widget-area .widget-title{font-style:normal;font-weight:700;font-size:20px;line-height:1.5;color:var(--global-palette3);}.primary-sidebar.widget-area .sidebar-inner-wrap a:where(:not(.button):not(.wp-block-button__link):not(.wp-element-button)){color:var(--global-palette1);}.primary-sidebar.widget-area .sidebar-inner-wrap a:where(:not(.button):not(.wp-block-button__link):not(.wp-element-button)):hover{color:var(--global-palette2);}.primary-sidebar.widget-area{padding:0px 0px 0px 0px;}.has-sidebar.has-left-sidebar:not(.rtl) .primary-sidebar.widget-area, .rtl.has-sidebar:not(.has-left-sidebar) .primary-sidebar.widget-area{border-right:0px none var(--global-palette2);}.has-sidebar:not(.has-left-sidebar):not(.rtl) .primary-sidebar.widget-area, .rtl.has-sidebar.has-left-sidebar .primary-sidebar.widget-area{border-left:0px none var(--global-palette2);}button, .button, .wp-block-button__link, input[type="button"], input[type="reset"], input[type="submit"], .fl-button, .elementor-button-wrapper .elementor-button, .wc-block-components-checkout-place-order-button, .wc-block-cart__submit{border-radius:7px;box-shadow:0px 0px 0px -7px rgba(0,0,0,0);}button:hover, button:focus, button:active, .button:hover, .button:focus, .button:active, .wp-block-button__link:hover, .wp-block-button__link:focus, .wp-block-button__link:active, input[type="button"]:hover, input[type="button"]:focus, input[type="button"]:active, input[type="reset"]:hover, input[type="reset"]:focus, input[type="reset"]:active, input[type="submit"]:hover, input[type="submit"]:focus, input[type="submit"]:active, .elementor-button-wrapper .elementor-button:hover, .elementor-button-wrapper .elementor-button:focus, .elementor-button-wrapper .elementor-button:active, .wc-block-cart__submit:hover{box-shadow:0px 15px 25px -7px rgba(0,0,0,0.1);}.kb-button.kb-btn-global-outline.kb-btn-global-inherit{padding-top:calc(px - 2px);padding-right:calc(px - 2px);padding-bottom:calc(px - 2px);padding-left:calc(px - 2px);}@media all and (min-width: 1025px){.transparent-header .entry-hero .entry-hero-container-inner{padding-top:60px;}}@media all and (max-width: 1024px){.mobile-transparent-header .entry-hero .entry-hero-container-inner{padding-top:60px;}}@media all and (max-width: 767px){.mobile-transparent-header .entry-hero .entry-hero-container-inner{padding-top:60px;}}.comment-metadata a:not(.comment-edit-link), .comment-body .edit-link:before{display:none;}.entry-hero.post-hero-section .entry-header{min-height:200px;}
+/* Kadence Header CSS */
+@media all and (max-width: 1024px){.mobile-transparent-header #masthead{position:absolute;left:0px;right:0px;z-index:100;}.kadence-scrollbar-fixer.mobile-transparent-header #masthead{right:var(--scrollbar-offset,0);}.mobile-transparent-header #masthead, .mobile-transparent-header .site-top-header-wrap .site-header-row-container-inner, .mobile-transparent-header .site-main-header-wrap .site-header-row-container-inner, .mobile-transparent-header .site-bottom-header-wrap .site-header-row-container-inner{background:transparent;}.site-header-row-tablet-layout-fullwidth, .site-header-row-tablet-layout-standard{padding:0px;}}@media all and (min-width: 1025px){.transparent-header #masthead{position:absolute;left:0px;right:0px;z-index:100;}.transparent-header.kadence-scrollbar-fixer #masthead{right:var(--scrollbar-offset,0);}.transparent-header #masthead, .transparent-header .site-top-header-wrap .site-header-row-container-inner, .transparent-header .site-main-header-wrap .site-header-row-container-inner, .transparent-header .site-bottom-header-wrap .site-header-row-container-inner{background:transparent;}}.site-branding a.brand img{max-width:300px;}.site-branding a.brand img.svg-logo-image{width:300px;}.site-branding{padding:0px 0px 0px 0px;}#masthead, #masthead .kadence-sticky-header.item-is-fixed:not(.item-at-start):not(.site-header-row-container):not(.site-main-header-wrap), #masthead .kadence-sticky-header.item-is-fixed:not(.item-at-start) > .site-header-row-container-inner{background:#ffffff;}.site-main-header-wrap .site-header-row-container-inner{border-bottom:1px solid #d9d9d9;}.site-main-header-inner-wrap{min-height:60px;}.header-navigation[class*="header-navigation-style-underline"] .header-menu-container.primary-menu-container>ul>li>a:after{width:calc( 100% - 2em);}.main-navigation .primary-menu-container > ul > li.menu-item > a{padding-left:calc(2em / 2);padding-right:calc(2em / 2);padding-top:0.6em;padding-bottom:0.6em;color:var(--global-palette4);}.main-navigation .primary-menu-container > ul > li.menu-item .dropdown-nav-special-toggle{right:calc(2em / 2);}.main-navigation .primary-menu-container > ul li.menu-item > a{font-style:normal;font-weight:500;}.main-navigation .primary-menu-container > ul > li.menu-item > a:hover{color:var(--global-palette-highlight);}.main-navigation .primary-menu-container > ul > li.menu-item.current-menu-item > a{color:var(--global-palette1);}.header-navigation .header-menu-container ul ul.sub-menu, .header-navigation .header-menu-container ul ul.submenu{background:var(--global-palette3);box-shadow:0px 2px 13px 0px rgba(0,0,0,0.1);}.header-navigation .header-menu-container ul ul li.menu-item, .header-menu-container ul.menu > li.kadence-menu-mega-enabled > ul > li.menu-item > a{border-bottom:1px solid rgba(255,255,255,0.1);border-radius:0px 0px 0px 0px;}.header-navigation .header-menu-container ul ul li.menu-item > a{width:200px;padding-top:1em;padding-bottom:1em;color:var(--global-palette8);font-size:12px;}.header-navigation .header-menu-container ul ul li.menu-item > a:hover{color:var(--global-palette9);background:var(--global-palette4);border-radius:0px 0px 0px 0px;}.header-navigation .header-menu-container ul ul li.menu-item.current-menu-item > a{color:var(--global-palette9);background:var(--global-palette4);border-radius:0px 0px 0px 0px;}.mobile-toggle-open-container .menu-toggle-open, .mobile-toggle-open-container .menu-toggle-open:focus{color:var(--global-palette5);padding:0.4em 0.6em 0.4em 0.6em;font-size:14px;}.mobile-toggle-open-container .menu-toggle-open.menu-toggle-style-bordered{border:1px solid currentColor;}.mobile-toggle-open-container .menu-toggle-open .menu-toggle-icon{font-size:20px;}.mobile-toggle-open-container .menu-toggle-open:hover, .mobile-toggle-open-container .menu-toggle-open:focus-visible{color:var(--global-palette-highlight);}.mobile-navigation ul li{font-size:14px;}.mobile-navigation ul li a{padding-top:1em;padding-bottom:1em;}.mobile-navigation ul li > a, .mobile-navigation ul li.menu-item-has-children > .drawer-nav-drop-wrap{color:var(--global-palette8);}.mobile-navigation ul li.current-menu-item > a, .mobile-navigation ul li.current-menu-item.menu-item-has-children > .drawer-nav-drop-wrap{color:var(--global-palette-highlight);}.mobile-navigation ul li.menu-item-has-children .drawer-nav-drop-wrap, .mobile-navigation ul li:not(.menu-item-has-children) a{border-bottom:1px solid rgba(255,255,255,0.1);}.mobile-navigation:not(.drawer-navigation-parent-toggle-true) ul li.menu-item-has-children .drawer-nav-drop-wrap button{border-left:1px solid rgba(255,255,255,0.1);}#mobile-drawer .drawer-header .drawer-toggle{padding:0.6em 0.15em 0.6em 0.15em;font-size:24px;}.search-toggle-open-container .search-toggle-open{color:var(--global-palette5);}.search-toggle-open-container .search-toggle-open.search-toggle-style-bordered{border:1px solid currentColor;}.search-toggle-open-container .search-toggle-open .search-toggle-icon{font-size:1em;}.search-toggle-open-container .search-toggle-open:hover, .search-toggle-open-container .search-toggle-open:focus{color:var(--global-palette-highlight);}#search-drawer .drawer-inner{background:rgba(9, 12, 16, 0.97);}
+/* Kadence Footer CSS */
+#colophon{background:#303440;}.site-middle-footer-wrap .site-footer-row-container-inner{font-style:normal;color:var(--global-palette9);}.site-footer .site-middle-footer-wrap a:where(:not(.button):not(.wp-block-button__link):not(.wp-element-button)){color:var(--global-palette9);}.site-footer .site-middle-footer-wrap a:where(:not(.button):not(.wp-block-button__link):not(.wp-element-button)):hover{color:var(--global-palette1);}.site-middle-footer-inner-wrap{padding-top:30px;padding-bottom:0px;grid-column-gap:30px;grid-row-gap:30px;}.site-middle-footer-inner-wrap .widget{margin-bottom:25px;}.site-middle-footer-inner-wrap .widget-area .widget-title{font-style:normal;color:var(--global-palette9);}.site-middle-footer-inner-wrap .site-footer-section:not(:last-child):after{right:calc(-30px / 2);}.site-bottom-footer-wrap .site-footer-row-container-inner{font-style:normal;color:var(--global-palette9);}.site-bottom-footer-inner-wrap{padding-top:10px;padding-bottom:30px;grid-column-gap:30px;}.site-bottom-footer-inner-wrap .widget{margin-bottom:30px;}.site-bottom-footer-inner-wrap .widget-area .widget-title{font-style:normal;color:var(--global-palette9);}.site-bottom-footer-inner-wrap .site-footer-section:not(:last-child):after{right:calc(-30px / 2);}
+/*# sourceURL=kadence-global-inline-css */
+</style>
+<link data-optimized="1" rel='stylesheet' id='kadence-header-css' href='https://networkproguide.com/wp-content/litespeed/css/9912047b8887ba38bc5ba9c650a52412.css?ver=a03fb' media='all' />
+<link data-optimized="1" rel='stylesheet' id='kadence-content-css' href='https://networkproguide.com/wp-content/litespeed/css/f977bc8825622085aa16456915227f4c.css?ver=bf7e6' media='all' />
+<link data-optimized="1" rel='stylesheet' id='kadence-comments-css' href='https://networkproguide.com/wp-content/litespeed/css/5bf6a526845e4b4627c3889ddfc2db20.css?ver=339b2' media='all' />
+<link data-optimized="1" rel='stylesheet' id='kadence-sidebar-css' href='https://networkproguide.com/wp-content/litespeed/css/4499ae1fbaca9548cb1438c9ada86f6f.css?ver=debd4' media='all' />
+<link data-optimized="1" rel='stylesheet' id='kadence-author-box-css' href='https://networkproguide.com/wp-content/litespeed/css/ab464b21ee53676596b96bf645dc47ba.css?ver=ffd3e' media='all' />
+<link data-optimized="1" rel='stylesheet' id='kadence-footer-css' href='https://networkproguide.com/wp-content/litespeed/css/7a20740c12ffaf755d39e4cb4ecaed53.css?ver=23698' media='all' />
+<link data-optimized="1" rel='stylesheet' id='addtoany-css' href='https://networkproguide.com/wp-content/litespeed/css/2a489d28e2fc2088b3fe0bcda8417525.css?ver=48a4b' media='all' />
+<style id="addtoany-inline-css">
+@media screen and (max-width:980px){
+.a2a_floating_style.a2a_vertical_style{display:none;}
+}
+/*# sourceURL=addtoany-inline-css */
+</style>
+<link data-optimized="1" rel='stylesheet' id='kadence-rankmath-css' href='https://networkproguide.com/wp-content/litespeed/css/8bb1a200ced66c704844fddb0edb2ff6.css?ver=2bd07' media='all' />
+<style id="kadence-blocks-global-variables-inline-css">
+:root {--global-kb-font-size-sm:clamp(0.8rem, 0.73rem + 0.217vw, 0.9rem);--global-kb-font-size-md:clamp(1.1rem, 0.995rem + 0.326vw, 1.25rem);--global-kb-font-size-lg:clamp(1.75rem, 1.576rem + 0.543vw, 2rem);--global-kb-font-size-xl:clamp(2.25rem, 1.728rem + 1.63vw, 3rem);--global-kb-font-size-xxl:clamp(2.5rem, 1.456rem + 3.26vw, 4rem);--global-kb-font-size-xxxl:clamp(2.75rem, 0.489rem + 7.065vw, 6rem);}
+:root,:root:where(.kb-tokens){--kb-token--primitive--color--brand--primary:#0092e8;--kb-token--primitive--color--brand--secondary:#2b6cb0;--kb-token--primitive--color--brand--accent:#ED8936;--kb-token--primitive--color--brand--button:#3633e1;--kb-token--primitive--color--brand--button-hover:#2f2ffc;--kb-token--primitive--color--neutral--0:#ffffff;--kb-token--primitive--color--neutral--50:#F7FAFC;--kb-token--primitive--color--neutral--100:rgba(237,242,247,0.98);--kb-token--primitive--color--neutral--200:#E2E8F0;--kb-token--primitive--color--neutral--300:#CBD5E0;--kb-token--primitive--color--neutral--500:#718096;--kb-token--primitive--color--neutral--600:#4A5568;--kb-token--primitive--color--neutral--700:#2D3748;--kb-token--primitive--color--neutral--900:#1A202C;--kb-token--primitive--color--notice--success:#38A169;--kb-token--primitive--color--notice--warning:#DD6B20;--kb-token--primitive--color--notice--error:#E53E3E;--kb-token--primitive--color--notice--info:#3182CE;--kb-token--primitive--color--transparent:transparent;--kb-token--primitive--dimension--spacing--xxs:0.5rem;--kb-token--primitive--dimension--spacing--xs:1rem;--kb-token--primitive--dimension--spacing--sm:1.5rem;--kb-token--primitive--dimension--spacing--md:2rem;--kb-token--primitive--dimension--spacing--lg:3rem;--kb-token--primitive--dimension--spacing--xl:4rem;--kb-token--primitive--dimension--spacing--xxl:5rem;--kb-token--primitive--dimension--spacing--3xl:6.5rem;--kb-token--primitive--dimension--spacing--4xl:8rem;--kb-token--primitive--dimension--spacing--5xl:10rem;--kb-token--primitive--dimension--gap--none:0rem;--kb-token--primitive--dimension--gap--xs:0.5rem;--kb-token--primitive--dimension--gap--sm:1rem;--kb-token--primitive--dimension--gap--md:2rem;--kb-token--primitive--dimension--gap--lg:4rem;--kb-token--primitive--dimension--font-size--sm:clamp(0.8rem, 0.73rem + 0.217vw, 0.9rem);--kb-token--primitive--dimension--font-size--md:clamp(1.1rem, 0.995rem + 0.326vw, 1.25rem);--kb-token--primitive--dimension--font-size--lg:clamp(1.75rem, 1.576rem + 0.543vw, 2rem);--kb-token--primitive--dimension--font-size--xl:clamp(2.25rem, 1.728rem + 1.63vw, 3rem);--kb-token--primitive--dimension--font-size--xxl:clamp(2.5rem, 1.456rem + 3.26vw, 4rem);--kb-token--primitive--dimension--font-size--xxxl:clamp(2.75rem, 0.489rem + 7.065vw, 6rem);--kb-token--primitive--dimension--radius--xs:0.125rem;--kb-token--primitive--dimension--radius--sm:0.25rem;--kb-token--primitive--dimension--radius--md:0.375rem;--kb-token--primitive--dimension--radius--lg:0.5rem;--kb-token--primitive--dimension--radius--xl:0.75rem;--kb-token--primitive--dimension--radius--2xl:1rem;--kb-token--primitive--dimension--radius--3xl:1.5rem;--kb-token--primitive--dimension--radius--full:9999px;--kb-token--primitive--dimension--border-width--sm:1px;--kb-token--primitive--dimension--border-width--md:2px;--kb-token--primitive--dimension--border-width--lg:4px;--kb-token--primitive--dimension--icon-size--sm:1rem;--kb-token--primitive--dimension--icon-size--md:1.5rem;--kb-token--primitive--dimension--icon-size--lg:2.25rem;--kb-token--primitive--fontSize--xs:0.64rem;--kb-token--primitive--fontSize--sm:0.8rem;--kb-token--primitive--fontSize--md:1rem;--kb-token--primitive--fontSize--lg:1.25rem;--kb-token--primitive--fontSize--xl:1.563rem;--kb-token--primitive--fontSize--2xl:1.953rem;--kb-token--primitive--fontSize--3xl:2.441rem;--kb-token--primitive--shadow--xs:0px 1px 2px 0px #1717171f;--kb-token--primitive--shadow--sm:0px 2px 4px 0px #1717171f;--kb-token--primitive--shadow--md:0px 2px 8px 0px #1717171f;--kb-token--semantic--color--text:var(--kb-token--primitive--color--neutral--900);--kb-token--semantic--color--text-muted:var(--kb-token--primitive--color--neutral--500);--kb-token--semantic--color--surface:var(--kb-token--primitive--color--neutral--0);--kb-token--semantic--color--surface-alt:var(--kb-token--primitive--color--neutral--50);--kb-token--semantic--color--border:var(--kb-token--primitive--color--neutral--200);--kb-token--semantic--color--border-hover:var(--kb-token--primitive--color--transparent);--kb-token--semantic--color--link:var(--kb-token--primitive--color--brand--primary);--kb-token--semantic--color--button-bg:var(--kb-token--primitive--color--brand--primary);--kb-token--semantic--color--button-text:var(--kb-token--primitive--color--neutral--0);--kb-token--semantic--color--button-bg-hover:var(--kb-token--primitive--color--brand--secondary);--kb-token--semantic--color--button-text-hover:var(--kb-token--primitive--color--neutral--0);--kb-token--semantic--color--button-border:var(--kb-token--primitive--color--transparent);--kb-token--semantic--color--icon:currentColor;--kb-token--semantic--color--icon-hover:var(--kb-token--primitive--color--brand--primary);--kb-token--semantic--color--rowlayout-bg:var(--kb-token--primitive--color--transparent);--kb-token--semantic--color--column-bg:var(--kb-token--primitive--color--transparent);--kb-token--semantic--color--column-bg-hover:var(--kb-token--primitive--color--transparent);--kb-token--semantic--color--image-bg:var(--kb-token--primitive--color--transparent);--kb-token--semantic--color--heading-bg:var(--kb-token--primitive--color--transparent);--kb-token--semantic--spacing--inline:var(--kb-token--primitive--dimension--spacing--md);--kb-token--semantic--spacing--block:var(--kb-token--primitive--dimension--spacing--lg);--kb-token--semantic--spacing--section:var(--kb-token--primitive--dimension--spacing--xl);--kb-token--semantic--spacing--media-padding:0;--kb-token--semantic--spacing--heading-padding:0;--kb-token--semantic--radius--control:3px;--kb-token--semantic--radius--media:0;--kb-token--semantic--radius--rowlayout:0;--kb-token--semantic--radius--column:0;--kb-token--semantic--radius--column-hover:0;--kb-token--semantic--radius--heading:0;--kb-token--semantic--border-width--default:var(--kb-token--primitive--dimension--border-width--sm);--kb-token--semantic--border-width--default-hover:0;--kb-token--semantic--border-width--media:0;--kb-token--semantic--border-width--button:0;--kb-token--semantic--border-style--default:none;--kb-token--semantic--border-style--default-hover:solid;--kb-token--semantic--border-style--button:solid;--kb-token--semantic--icon-size--default:var(--kb-token--primitive--dimension--icon-size--md);--kb-token--semantic--icon-size--icon:50px;--kb-token--semantic--font-size--control:1.125rem;--kb-token--semantic--font-size--heading:2rem;--kb-token--semantic--font-weight--control:normal;--kb-token--semantic--font-weight--heading:400;--kb-token--semantic--line-height--control:normal;--kb-token--semantic--line-height--heading:1.125;--kb-token--semantic--font-style--control:normal;--kb-token--semantic--text-transform--control:none;--kb-token--semantic--text-transform--heading:none;--kb-token--semantic--letter-spacing--control:0;--kb-token--semantic--letter-spacing--heading:0;--kb-token--semantic--shadow--card:0px 2px 8px 0px var(--kb-token--primitive--color--neutral--900);--kb-token--semantic--shadow--media:0px 0px 0px 0px var(--kb-token--primitive--color--transparent);--kb-token--semantic--shadow--button:0px 0px 0px 0px var(--kb-token--primitive--color--transparent);--kb-token--semantic--shadow--button-hover:0px 0px 0px 0px var(--kb-token--primitive--color--transparent);--global-kb-spacing-xxs:var(--kb-token--primitive--dimension--spacing--xxs,0.5rem);--global-kb-spacing-xs:var(--kb-token--primitive--dimension--spacing--xs,1rem);--global-kb-spacing-sm:var(--kb-token--primitive--dimension--spacing--sm,1.5rem);--global-kb-spacing-md:var(--kb-token--primitive--dimension--spacing--md,2rem);--global-kb-spacing-lg:var(--kb-token--primitive--dimension--spacing--lg,3rem);--global-kb-spacing-xl:var(--kb-token--primitive--dimension--spacing--xl,4rem);--global-kb-spacing-xxl:var(--kb-token--primitive--dimension--spacing--xxl,5rem);--global-kb-spacing-3xl:var(--kb-token--primitive--dimension--spacing--3xl,6.5rem);--global-kb-spacing-4xl:var(--kb-token--primitive--dimension--spacing--4xl,8rem);--global-kb-spacing-5xl:var(--kb-token--primitive--dimension--spacing--5xl,10rem);--global-kb-gap-none:var(--kb-token--primitive--dimension--gap--none,0rem);--global-kb-gap-xs:var(--kb-token--primitive--dimension--gap--xs,0.5rem);--global-kb-gap-sm:var(--kb-token--primitive--dimension--gap--sm,1rem);--global-kb-gap-md:var(--kb-token--primitive--dimension--gap--md,2rem);--global-kb-gap-lg:var(--kb-token--primitive--dimension--gap--lg,4rem);--global-kb-font-size-sm:var(--kb-token--primitive--dimension--font-size--sm,clamp(0.8rem, 0.73rem + 0.217vw, 0.9rem));--global-kb-font-size-md:var(--kb-token--primitive--dimension--font-size--md,clamp(1.1rem, 0.995rem + 0.326vw, 1.25rem));--global-kb-font-size-lg:var(--kb-token--primitive--dimension--font-size--lg,clamp(1.75rem, 1.576rem + 0.543vw, 2rem));--global-kb-font-size-xl:var(--kb-token--primitive--dimension--font-size--xl,clamp(2.25rem, 1.728rem + 1.63vw, 3rem));--global-kb-font-size-xxl:var(--kb-token--primitive--dimension--font-size--xxl,clamp(2.5rem, 1.456rem + 3.26vw, 4rem));--global-kb-font-size-xxxl:var(--kb-token--primitive--dimension--font-size--xxxl,clamp(2.75rem, 0.489rem + 7.065vw, 6rem));}
+:root,:root:where(.kb-tokens){--kb-token--preset--kadence-singlebtn--default--button-bg:var(--kb-token--semantic--color--button-bg);--kb-token--preset--kadence-singlebtn--default--button-text:var(--kb-token--semantic--color--button-text);--kb-token--preset--kadence-singlebtn--default--button-bg-hover:var(--kb-token--semantic--color--button-bg-hover);--kb-token--preset--kadence-singlebtn--default--button-text-hover:var(--kb-token--semantic--color--button-text-hover);--kb-token--preset--kadence-singlebtn--default--button-radius:var(--kb-token--semantic--radius--control);--kb-token--preset--kadence-singlebtn--default--button-border-width:var(--kb-token--semantic--border-width--button);--kb-token--preset--kadence-singlebtn--default--button-border-style:var(--kb-token--semantic--border-style--button);--kb-token--preset--kadence-singlebtn--default--button-border-color:var(--kb-token--semantic--color--button-border);--kb-token--preset--kadence-singlebtn--default--button-padding--top:0.4em;--kb-token--preset--kadence-singlebtn--default--button-padding--right:1em;--kb-token--preset--kadence-singlebtn--default--button-padding--bottom:0.4em;--kb-token--preset--kadence-singlebtn--default--button-padding--left:1em;--kb-token--preset--kadence-singlebtn--default--button-padding:var(--kb-token--preset--kadence-singlebtn--default--button-padding--top) var(--kb-token--preset--kadence-singlebtn--default--button-padding--right) var(--kb-token--preset--kadence-singlebtn--default--button-padding--bottom) var(--kb-token--preset--kadence-singlebtn--default--button-padding--left);--kb-token--preset--kadence-singlebtn--default--button-margin--top:0;--kb-token--preset--kadence-singlebtn--default--button-margin--right:0;--kb-token--preset--kadence-singlebtn--default--button-margin--bottom:0;--kb-token--preset--kadence-singlebtn--default--button-margin--left:0;--kb-token--preset--kadence-singlebtn--default--button-margin:var(--kb-token--preset--kadence-singlebtn--default--button-margin--top) var(--kb-token--preset--kadence-singlebtn--default--button-margin--right) var(--kb-token--preset--kadence-singlebtn--default--button-margin--bottom) var(--kb-token--preset--kadence-singlebtn--default--button-margin--left);--kb-token--preset--kadence-image--default--background:var(--kb-token--semantic--color--image-bg);--kb-token--preset--kadence-image--default--border:var(--kb-token--semantic--color--border);--kb-token--preset--kadence-image--default--borderWidth:var(--kb-token--semantic--border-width--media);--kb-token--preset--kadence-image--default--borderRadius:var(--kb-token--semantic--radius--media);--kb-token--preset--kadence-image--default--shadow:var(--kb-token--semantic--shadow--media);--kb-token--preset--kadence-image--default--padding:var(--kb-token--semantic--spacing--media-padding);--kb-token--preset--kadence-rowlayout--default--background:var(--kb-token--semantic--color--rowlayout-bg);--kb-token--preset--kadence-rowlayout--default--borderRadius:var(--kb-token--semantic--radius--rowlayout);--kb-token--preset--kadence-column--default--background:var(--kb-token--semantic--color--column-bg);--kb-token--preset--kadence-column--default--borderRadius:var(--kb-token--semantic--radius--column);--kb-token--preset--kadence-single-icon--default--color:var(--kb-token--semantic--color--icon);--kb-token--preset--kadence-single-icon--default--size:var(--kb-token--semantic--icon-size--icon);--kb-token--preset--kadence-advancedheading--default--background:var(--kb-token--semantic--color--heading-bg);--kb-token--preset--kadence-advancedheading--default--padding:var(--kb-token--semantic--spacing--heading-padding);--kb-token--preset--kadence-advancedheading--default--borderColor:var(--kb-token--semantic--color--border);--kb-token--preset--kadence-advancedheading--default--borderWidth:var(--kb-token--semantic--border-width--default);--kb-token--preset--kadence-advancedheading--default--borderRadius:var(--kb-token--semantic--radius--heading);--kb-token--preset--kadence-advancedheading--default--borderStyle:var(--kb-token--semantic--border-style--default);}.wp-block-kadence-singlebtn.kb-preset--default{--kb-btn-radius:var(--kb-token--preset--kadence-singlebtn--default--button-radius);--kb-btn-border-width:var(--kb-token--preset--kadence-singlebtn--default--button-border-width);--kb-btn-border-style:var(--kb-token--preset--kadence-singlebtn--default--button-border-style);--kb-btn-border-color:var(--kb-token--preset--kadence-singlebtn--default--button-border-color);--kb-btn-padding:var(--kb-token--preset--kadence-singlebtn--default--button-padding);--kb-btn-margin:var(--kb-token--preset--kadence-singlebtn--default--button-margin);}.wp-block-kadence-singlebtn.kb-preset--outline{--global-palette-btn-bg:unset;--global-palette-btn:unset;--global-palette-btn-bg-hover:unset;--global-palette-btn-hover:unset;--kb-btn-radius:unset;--kb-btn-padding:unset;--kb-btn-margin:unset;--kb-btn-border-width:unset;--kb-btn-border-style:unset;--kb-btn-border-color:unset;--kb-btn-shadow:unset;--kb-btn-shadow-hover:unset;}.wp-block-kadence-singlebtn.kb-preset--theme-base{--global-palette-btn-bg:unset;--global-palette-btn:unset;--global-palette-btn-bg-hover:unset;--global-palette-btn-hover:unset;--kb-btn-radius:unset;--kb-btn-padding:unset;--kb-btn-margin:unset;--kb-btn-border-width:unset;--kb-btn-border-style:unset;--kb-btn-border-color:unset;--kb-btn-shadow:unset;--kb-btn-shadow-hover:unset;}.wp-block-kadence-singlebtn.kb-preset--theme-secondary{--global-palette-btn-bg:unset;--global-palette-btn:unset;--global-palette-btn-bg-hover:unset;--global-palette-btn-hover:unset;--kb-btn-radius:unset;--kb-btn-padding:unset;--kb-btn-margin:unset;--kb-btn-border-width:unset;--kb-btn-border-style:unset;--kb-btn-border-color:unset;--kb-btn-shadow:unset;--kb-btn-shadow-hover:unset;}.wp-block-kadence-image.kb-preset--default{--kb-img-bg:var(--kb-token--preset--kadence-image--default--background);--kb-img-border-color:var(--kb-token--preset--kadence-image--default--border);--kb-img-border-width:var(--kb-token--preset--kadence-image--default--borderWidth);--kb-img-radius:var(--kb-token--preset--kadence-image--default--borderRadius);--kb-img-shadow:var(--kb-token--preset--kadence-image--default--shadow);--kb-img-padding:var(--kb-token--preset--kadence-image--default--padding);}.wp-block-kadence-rowlayout.kb-preset--default{--kb-row-bg:var(--kb-token--preset--kadence-rowlayout--default--background);--kb-row-radius:var(--kb-token--preset--kadence-rowlayout--default--borderRadius);}.wp-block-kadence-column.kb-preset--default{--kb-col-bg:var(--kb-token--preset--kadence-column--default--background);--kb-col-radius:var(--kb-token--preset--kadence-column--default--borderRadius);}.wp-block-kadence-single-icon.kb-preset--default{--kb-icon-color:var(--kb-token--preset--kadence-single-icon--default--color);--kb-icon-size:var(--kb-token--preset--kadence-single-icon--default--size);}.wp-block-kadence-advancedheading.kb-preset--default{--kb-heading-bg:var(--kb-token--preset--kadence-advancedheading--default--background);--kb-heading-padding:var(--kb-token--preset--kadence-advancedheading--default--padding);--kb-heading-border-color:var(--kb-token--preset--kadence-advancedheading--default--borderColor);--kb-heading-border-width:var(--kb-token--preset--kadence-advancedheading--default--borderWidth);--kb-heading-radius:var(--kb-token--preset--kadence-advancedheading--default--borderRadius);--kb-heading-border-style:var(--kb-token--preset--kadence-advancedheading--default--borderStyle);}.wp-block-kadence-singlebtn{--kb-btn-radius:var(--kb-token--preset--kadence-singlebtn--default--button-radius);--kb-btn-border-width:var(--kb-token--preset--kadence-singlebtn--default--button-border-width);--kb-btn-border-style:var(--kb-token--preset--kadence-singlebtn--default--button-border-style);--kb-btn-border-color:var(--kb-token--preset--kadence-singlebtn--default--button-border-color);--kb-btn-padding:var(--kb-token--preset--kadence-singlebtn--default--button-padding);--kb-btn-margin:var(--kb-token--preset--kadence-singlebtn--default--button-margin);}.wp-block-kadence-image{--kb-img-bg:var(--kb-token--preset--kadence-image--default--background);--kb-img-border-color:var(--kb-token--preset--kadence-image--default--border);--kb-img-border-width:var(--kb-token--preset--kadence-image--default--borderWidth);--kb-img-radius:var(--kb-token--preset--kadence-image--default--borderRadius);--kb-img-shadow:var(--kb-token--preset--kadence-image--default--shadow);--kb-img-padding:var(--kb-token--preset--kadence-image--default--padding);}.wp-block-kadence-rowlayout{--kb-row-bg:var(--kb-token--preset--kadence-rowlayout--default--background);--kb-row-radius:var(--kb-token--preset--kadence-rowlayout--default--borderRadius);}.wp-block-kadence-column{--kb-col-bg:var(--kb-token--preset--kadence-column--default--background);--kb-col-radius:var(--kb-token--preset--kadence-column--default--borderRadius);}.wp-block-kadence-single-icon{--kb-icon-color:var(--kb-token--preset--kadence-single-icon--default--color);--kb-icon-size:var(--kb-token--preset--kadence-single-icon--default--size);}.wp-block-kadence-advancedheading{--kb-heading-bg:var(--kb-token--preset--kadence-advancedheading--default--background);--kb-heading-padding:var(--kb-token--preset--kadence-advancedheading--default--padding);--kb-heading-border-color:var(--kb-token--preset--kadence-advancedheading--default--borderColor);--kb-heading-border-width:var(--kb-token--preset--kadence-advancedheading--default--borderWidth);--kb-heading-radius:var(--kb-token--preset--kadence-advancedheading--default--borderRadius);--kb-heading-border-style:var(--kb-token--preset--kadence-advancedheading--default--borderStyle);}
+[data-kb-palette]{--kb-token--preset--kadence-singlebtn--default--button-bg:var(--kb-token--semantic--color--button-bg);--kb-token--preset--kadence-singlebtn--default--button-text:var(--kb-token--semantic--color--button-text);--kb-token--preset--kadence-singlebtn--default--button-bg-hover:var(--kb-token--semantic--color--button-bg-hover);--kb-token--preset--kadence-singlebtn--default--button-text-hover:var(--kb-token--semantic--color--button-text-hover);--kb-token--preset--kadence-singlebtn--default--button-radius:var(--kb-token--semantic--radius--control);--kb-token--preset--kadence-singlebtn--default--button-border-width:var(--kb-token--semantic--border-width--button);--kb-token--preset--kadence-singlebtn--default--button-border-style:var(--kb-token--semantic--border-style--button);--kb-token--preset--kadence-singlebtn--default--button-border-color:var(--kb-token--semantic--color--button-border);--kb-token--preset--kadence-singlebtn--default--button-padding--top:0.4em;--kb-token--preset--kadence-singlebtn--default--button-padding--right:1em;--kb-token--preset--kadence-singlebtn--default--button-padding--bottom:0.4em;--kb-token--preset--kadence-singlebtn--default--button-padding--left:1em;--kb-token--preset--kadence-singlebtn--default--button-padding:var(--kb-token--preset--kadence-singlebtn--default--button-padding--top) var(--kb-token--preset--kadence-singlebtn--default--button-padding--right) var(--kb-token--preset--kadence-singlebtn--default--button-padding--bottom) var(--kb-token--preset--kadence-singlebtn--default--button-padding--left);--kb-token--preset--kadence-singlebtn--default--button-margin--top:0;--kb-token--preset--kadence-singlebtn--default--button-margin--right:0;--kb-token--preset--kadence-singlebtn--default--button-margin--bottom:0;--kb-token--preset--kadence-singlebtn--default--button-margin--left:0;--kb-token--preset--kadence-singlebtn--default--button-margin:var(--kb-token--preset--kadence-singlebtn--default--button-margin--top) var(--kb-token--preset--kadence-singlebtn--default--button-margin--right) var(--kb-token--preset--kadence-singlebtn--default--button-margin--bottom) var(--kb-token--preset--kadence-singlebtn--default--button-margin--left);--kb-token--preset--kadence-image--default--background:var(--kb-token--semantic--color--image-bg);--kb-token--preset--kadence-image--default--border:var(--kb-token--semantic--color--border);--kb-token--preset--kadence-image--default--borderWidth:var(--kb-token--semantic--border-width--media);--kb-token--preset--kadence-image--default--borderRadius:var(--kb-token--semantic--radius--media);--kb-token--preset--kadence-image--default--shadow:var(--kb-token--semantic--shadow--media);--kb-token--preset--kadence-image--default--padding:var(--kb-token--semantic--spacing--media-padding);--kb-token--preset--kadence-rowlayout--default--background:var(--kb-token--semantic--color--rowlayout-bg);--kb-token--preset--kadence-rowlayout--default--borderRadius:var(--kb-token--semantic--radius--rowlayout);--kb-token--preset--kadence-column--default--background:var(--kb-token--semantic--color--column-bg);--kb-token--preset--kadence-column--default--borderRadius:var(--kb-token--semantic--radius--column);--kb-token--preset--kadence-single-icon--default--color:var(--kb-token--semantic--color--icon);--kb-token--preset--kadence-single-icon--default--size:var(--kb-token--semantic--icon-size--icon);--kb-token--preset--kadence-advancedheading--default--background:var(--kb-token--semantic--color--heading-bg);--kb-token--preset--kadence-advancedheading--default--padding:var(--kb-token--semantic--spacing--heading-padding);--kb-token--preset--kadence-advancedheading--default--borderColor:var(--kb-token--semantic--color--border);--kb-token--preset--kadence-advancedheading--default--borderWidth:var(--kb-token--semantic--border-width--default);--kb-token--preset--kadence-advancedheading--default--borderRadius:var(--kb-token--semantic--radius--heading);--kb-token--preset--kadence-advancedheading--default--borderStyle:var(--kb-token--semantic--border-style--default);}:root [class*="kadence-"].has-palette-1-color{color:var(--global-palette1) !important;}:root [class*="kadence-"].has-palette-1-background-color{background-color:var(--global-palette1) !important;}:root [class*="kadence-"].has-theme-palette-1-color{color:var(--global-palette1) !important;}:root [class*="kadence-"].has-theme-palette-1-background-color{background-color:var(--global-palette1) !important;}:root [class*="kadence-"].has-palette-2-color{color:var(--global-palette2) !important;}:root [class*="kadence-"].has-palette-2-background-color{background-color:var(--global-palette2) !important;}:root [class*="kadence-"].has-theme-palette-2-color{color:var(--global-palette2) !important;}:root [class*="kadence-"].has-theme-palette-2-background-color{background-color:var(--global-palette2) !important;}:root [class*="kadence-"].has-palette-3-color{color:var(--global-palette3) !important;}:root [class*="kadence-"].has-palette-3-background-color{background-color:var(--global-palette3) !important;}:root [class*="kadence-"].has-theme-palette-3-color{color:var(--global-palette3) !important;}:root [class*="kadence-"].has-theme-palette-3-background-color{background-color:var(--global-palette3) !important;}:root [class*="kadence-"].has-palette-4-color{color:var(--global-palette4) !important;}:root [class*="kadence-"].has-palette-4-background-color{background-color:var(--global-palette4) !important;}:root [class*="kadence-"].has-theme-palette-4-color{color:var(--global-palette4) !important;}:root [class*="kadence-"].has-theme-palette-4-background-color{background-color:var(--global-palette4) !important;}:root [class*="kadence-"].has-palette-5-color{color:var(--global-palette5) !important;}:root [class*="kadence-"].has-palette-5-background-color{background-color:var(--global-palette5) !important;}:root [class*="kadence-"].has-theme-palette-5-color{color:var(--global-palette5) !important;}:root [class*="kadence-"].has-theme-palette-5-background-color{background-color:var(--global-palette5) !important;}:root [class*="kadence-"].has-palette-6-color{color:var(--global-palette6) !important;}:root [class*="kadence-"].has-palette-6-background-color{background-color:var(--global-palette6) !important;}:root [class*="kadence-"].has-theme-palette-6-color{color:var(--global-palette6) !important;}:root [class*="kadence-"].has-theme-palette-6-background-color{background-color:var(--global-palette6) !important;}:root [class*="kadence-"].has-palette-7-color{color:var(--global-palette7) !important;}:root [class*="kadence-"].has-palette-7-background-color{background-color:var(--global-palette7) !important;}:root [class*="kadence-"].has-theme-palette-7-color{color:var(--global-palette7) !important;}:root [class*="kadence-"].has-theme-palette-7-background-color{background-color:var(--global-palette7) !important;}:root [class*="kadence-"].has-palette-8-color{color:var(--global-palette8) !important;}:root [class*="kadence-"].has-palette-8-background-color{background-color:var(--global-palette8) !important;}:root [class*="kadence-"].has-theme-palette-8-color{color:var(--global-palette8) !important;}:root [class*="kadence-"].has-theme-palette-8-background-color{background-color:var(--global-palette8) !important;}:root [class*="kadence-"].has-palette-9-color{color:var(--global-palette9) !important;}:root [class*="kadence-"].has-palette-9-background-color{background-color:var(--global-palette9) !important;}:root [class*="kadence-"].has-theme-palette-9-color{color:var(--global-palette9) !important;}:root [class*="kadence-"].has-theme-palette-9-background-color{background-color:var(--global-palette9) !important;}
+.wp-block-kadence-image img{background-color:var(--kb-img-bg,var(--kb-token--semantic--color--image-bg,transparent));border-color:var(--kb-img-border-color,var(--kb-token--semantic--color--border,#E2E8F0));border-width:var(--kb-img-border-width,var(--kb-token--semantic--border-width--media,0));border-radius:var(--kb-img-radius,var(--kb-token--semantic--radius--media,0));box-shadow:var(--kb-img-shadow,var(--kb-token--semantic--shadow--media,0px 0px 0px 0px transparent));}.wp-block-kadence-image *.kb-img{padding:var(--kb-img-padding,var(--kb-token--semantic--spacing--media-padding,0));}.wp-block-kadence-rowlayout{background-color:var(--kb-row-bg,var(--kb-token--semantic--color--rowlayout-bg,transparent));border-radius:var(--kb-row-radius,var(--kb-token--semantic--radius--rowlayout,0));}.wp-block-kadence-column> .kt-inside-inner-col{background-color:var(--kb-col-bg,var(--kb-token--semantic--color--column-bg,transparent));border-radius:var(--kb-col-radius,var(--kb-token--semantic--radius--column,0));}.wp-block-kadence-single-icon *.kb-svg-icon-wrap{color:var(--kb-icon-color,var(--kb-token--semantic--color--icon,currentColor));font-size:var(--kb-icon-size,var(--kb-token--semantic--icon-size--icon,50px));}.wp-block-kadence-advancedheading{background-color:var(--kb-heading-bg,var(--kb-token--semantic--color--heading-bg,transparent));padding:var(--kb-heading-padding,var(--kb-token--semantic--spacing--heading-padding,0));border-color:var(--kb-heading-border-color,var(--kb-token--semantic--color--border,#E2E8F0));border-width:var(--kb-heading-border-width,var(--kb-token--semantic--border-width--default,1px));border-radius:var(--kb-heading-radius,var(--kb-token--semantic--radius--heading,0));border-style:var(--kb-heading-border-style,var(--kb-token--semantic--border-style--default,none));}
+/*# sourceURL=kadence-blocks-global-variables-inline-css */
+</style>
+<style id="kadence_blocks_palette_css">:root .has-palette1-color{color:#0092e8}:root .has-palette1-background-color{background-color:#0092e8}:root .has-palette2-color{color:#2b6cb0}:root .has-palette2-background-color{background-color:#2b6cb0}:root .has-palette3-color{color:#1A202C}:root .has-palette3-background-color{background-color:#1A202C}:root .has-palette4-color{color:#2D3748}:root .has-palette4-background-color{background-color:#2D3748}:root .has-palette5-color{color:#4A5568}:root .has-palette5-background-color{background-color:#4A5568}:root .has-palette6-color{color:#718096}:root .has-palette6-background-color{background-color:#718096}:root .has-palette7-color{color:rgba(237,242,247,0.98)}:root .has-palette7-background-color{background-color:rgba(237,242,247,0.98)}:root .has-palette8-color{color:#F7FAFC}:root .has-palette8-background-color{background-color:#F7FAFC}:root .has-palette9-color{color:#ffffff}:root .has-palette9-background-color{background-color:#ffffff}</style><script id="addtoany-core-js-before">
+window.a2a_config=window.a2a_config||{};a2a_config.callbacks=[];a2a_config.overlays=[];a2a_config.templates={};
+a2a_config.callbacks.push({ready:function(){document.querySelectorAll(".a2a_s_undefined").forEach(function(emptyIcon){emptyIcon.parentElement.style.display="none";})}});
+
+//# sourceURL=addtoany-core-js-before
+</script>
+<script id="addtoany-core-js" defer src="https://static.addtoany.com/menu/page.js"></script>
+<script id="jquery-core-js" src="https://networkproguide.com/wp-includes/js/jquery/jquery.min.js"></script>
+<script data-optimized="1" id="jquery-migrate-js" src="https://networkproguide.com/wp-content/litespeed/js/47a628aef2f254c32c3b5878700a42ce.js?ver=1c5ed"></script>
+<script data-optimized="1" id="addtoany-jquery-js" defer src="https://networkproguide.com/wp-content/litespeed/js/0e9f377fa3cc9e6b1bb0de70ec3c69e4.js?ver=57bdc"></script>
+<script id="mv-script-wrapper-js" async="async" fetchpriority="high" data-noptimize="1" data-cfasync="false" src="https://scripts.scriptwrapper.com/tags/32011601-0d13-48b2-84dd-dfaa50613e3f.js"></script>
+<link rel="https://api.w.org/" href="https://networkproguide.com/wp-json/" /><link rel="alternate" title="JSON" type="application/json" href="https://networkproguide.com/wp-json/wp/v2/posts/1001985" /><link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://networkproguide.com/xmlrpc.php?rsd" />
+<link rel='shortlink' href='https://networkproguide.com/?p=1001985' />
+<script async id="google_gtagjs" src="https://www.googletagmanager.com/gtag/js?id=G-37EP0WVVC3"></script>
+<script id="google_gtagjs-inline">
+window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());gtag('config', 'G-37EP0WVVC3', {} );
+</script>
+<link rel="preload" href="https://networkproguide.com/wp-content/fonts/open-sans/memtYaGs126MiZpBA-UFUIcVXSCEkx2cmqvXlWqWuU6F.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="https://networkproguide.com/wp-content/fonts/open-sans/memvYaGs126MiZpBA-UvWbX2vVnXBbObj2OVTS-muw.woff2" as="font" type="font/woff2" crossorigin><link data-optimized="1" rel='stylesheet' id='kadence-fonts-gfonts-css' href='https://networkproguide.com/wp-content/litespeed/css/ae82c7e02b548ae5b0bcdd8075653b23.css?ver=a5141' media='all' />
+<link rel="icon" href="https://networkproguide.com/wp-content/uploads/cropped-NPG-Logo-fav-150x150.png" sizes="32x32" />
+<link rel="icon" href="https://networkproguide.com/wp-content/uploads/cropped-NPG-Logo-fav-300x300.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://networkproguide.com/wp-content/uploads/cropped-NPG-Logo-fav-300x300.png" />
+<meta name="msapplication-TileImage" content="https://networkproguide.com/wp-content/uploads/cropped-NPG-Logo-fav-300x300.png" />
+<style id="wp-custom-css">
+/*--Fix Widget Title Case--*/
+.widget-area .widget-title {
+	text-transform: none;
+}
+
+/*--Widget Background--*/
+.primary-sidebar.widget-area .widget {
+	background: white;
+	padding: 1.5rem 2rem 2rem 2rem;
+	border-radius: 0.4rem;
+	box-shadow: 0rem 0.94rem 1.56rem -0.625rem rgba(0,0,0,0.05);
+}
+
+/*--PRE Code Block CMD--*/
+pre {
+	  font-size: 1rem;
+	  background: black;
+    padding: 0.3125rem;
+    padding-left: 0.625rem;
+    font-family: monospace;
+    color: silver;
+	  white-space: pre;
+	  border-radius: 0.4rem;
+}
+
+.wp-block-preformatted {
+	white-space: pre;
+}
+
+.wp-block-code code {
+	white-space: pre;
+}
+
+/*--Post Images Border--*/
+.single-content img {
+    margin-bottom: 0;
+    border-width: thin;
+    border-style: solid;
+    border-color: #e2e2e2;
+    box-shadow: 0rem 0.1875rem 0.375rem 0 rgba(0, 0, 0, 0.2), 0 0.1875rem 0.5625rem 0 rgba(0, 0, 0, 0.19);
+}
+
+/*--Space List Items--*/
+.entry-content li {
+    margin-bottom: 1rem;
+}
+
+/*--CTA Button--*/
+.cta {
+	background-color: #ff9900;
+}
+.cta:hover {
+	background-color: #00cc66;
+}
+
+/*--Thrist Aff Links--*/
+.thirstylink {
+	color: #ff8d00;
+}
+
+.thirstylink:hover {
+	color: #00cc66;
+}
+
+/*--FTC Disclosure--*/
+#ftc_disclosure {
+	font-size: 80%;
+}
+
+#ftc_disclosure a {
+	color: black;
+}
+
+/*--Widget Title Decoration--*/
+.primary-sidebar.widget-area .widget-title {
+	position: relative;
+}
+
+.primary-sidebar.widget-area .widget-title:before {
+  position: absolute;
+  left: 0rem;
+  top: 1.8rem;
+  height: 0;
+  width: 2.7rem;
+  content: '';
+  border-bottom: 3px solid #0092e8;
+}
+
+/*--Breadcrumb Margin Archive--*/
+.archive .kadence-breadcrumbs {
+	margin-top: 0rem;
+	margin-bottom: 0rem;
+}
+
+/*Fix Sidebar Mobile Margin*/
+@media screen and (max-width: 1025px){ .primary-sidebar {
+	margin-top: 1.8rem;
+	}}
+
+/*Hide tag cloud on mobile*/
+@media screen and (max-width: 1025px){ #block-38.widget {
+	display: none;
+	}}
+
+/*Author Bio Margins*/
+@media screen and (min-width: 767px){.entry-author-description.author-bio {
+	max-width: none !important;
+	}}
+
+/*Single Feature*/
+#single_feature {
+	background: white;
+	padding: 1rem 2rem 1rem 2rem;
+	border: 1px solid #c9cbd1;
+	border-radius: 0.4rem;
+	box-shadow: 0rem 0.94rem 1.56rem -0.625rem rgba(0,0,0,0.05);
+	margin-bottom: 1.5rem;
+	font-size: 85%;
+	display: flex;
+	flex-direction: row;
+	width: 100%;
+}
+
+#single_feature .single_feature_text {
+	margin: 0rem;
+	width: 75%;
+}
+
+#single_feature figure {
+	margin-top: .3rem;
+	margin-right: 1rem;
+	width: 25%;
+}
+
+#single_feature a {
+	color: #ff8d00;
+}
+
+#single_feature a:hover {
+	color: #00cc66;
+}
+
+@media screen and (max-width: 767px){ #single_feature {
+	flex-direction: column;
+}
+	#single_feature .single_feature_text {
+	width: 100%;
+}
+	#single_feature figure {
+		width: 100%;
+	}
+}
+
+@media screen and (max-width: 719px){ #single_feature {
+	margin-left: -1rem;
+	margin-right: -1rem;
+	width: auto;
+	}}
+
+/*Comment Reply Buttons*/
+.comment-reply-link {
+	background: #0092e8;
+	color: white;
+	border-radius: .25rem;
+}
+
+/*Fix Comment Avatar*/
+.comment-author.vcard img {
+	display: inherit;
+}
+
+/*After Post Box*/
+.apbox {
+	margin-top: 3rem;
+	border-color: #25c7d6;
+  background: #f7fafc;
+  padding: 2rem;
+  border-style: dashed;
+  border-width: .15rem;
+}
+
+.apbox h2 {
+	color: #37193c;
+}
+
+.apbox ul {
+  list-style-type: '\2705  ';
+	font-size: medium;
+}
+
+.apbox .cta {
+	background-color: #1eb563;
+}
+
+/*Sidebar Bottom Ad Spacing*/
+.sidebar-inner-wrap {
+	margin-bottom: 2rem;
+}
+
+.single-content p {
+	line-height: 1.6;
+}
+</style>
+</head>
+
+<body class="wp-singular post-template-default single single-post postid-1001985 single-format-standard wp-custom-logo wp-embed-responsive wp-theme-kadence wp-child-theme-NetworkProGuide footer-on-bottom hide-focus-outline link-style-standard has-sidebar content-title-style-normal content-width-normal content-style-boxed content-vertical-padding-show non-transparent-header mobile-non-transparent-header grow-content-body">
+<div id="wrapper" class="site wp-site-blocks">
+			<a class="skip-link screen-reader-text scroll-ignore" href="#main">Skip to content</a>
+		<header id="masthead" class="site-header" role="banner" itemtype="https://schema.org/WPHeader" itemscope>
+	<div id="main-header" class="site-header-wrap">
+		<div class="site-header-inner-wrap">
+			<div class="site-header-upper-wrap">
+				<div class="site-header-upper-inner-wrap">
+					<div class="site-main-header-wrap site-header-row-container site-header-focus-item site-header-row-layout-standard" data-section="kadence_customizer_header_main">
+	<div class="site-header-row-container-inner">
+				<div class="site-container">
+			<div class="site-main-header-inner-wrap site-header-row site-header-row-has-sides site-header-row-no-center">
+									<div class="site-header-main-section-left site-header-section site-header-section-left">
+						<div class="site-header-item site-header-focus-item" data-section="title_tagline">
+	<div class="site-branding branding-layout-standard site-brand-logo-only"><a class="brand has-logo-image" href="https://networkproguide.com/" rel="home"><picture><source srcset="https://networkproguide.com/wp-content/uploads/NPG-LOGO-600-80.webp 600w,https://networkproguide.com/wp-content/uploads/NPG-LOGO-600-80-300x40.webp 300w" sizes="(max-width: 600px) 100vw, 600px" type="image/webp"><img width="600" height="80" src="https://networkproguide.com/wp-content/uploads/NPG-LOGO-600-80.png" class="custom-logo sp-no-webp" alt="NetworkProGuide" decoding="async" srcset="https://networkproguide.com/wp-content/uploads/NPG-LOGO-600-80.png 600w, https://networkproguide.com/wp-content/uploads/NPG-LOGO-600-80-300x40.png 300w" sizes="(max-width: 600px) 100vw, 600px"></picture></a></div></div><!-- data-section="title_tagline" -->
+					</div>
+																	<div class="site-header-main-section-right site-header-section site-header-section-right">
+						<div class="site-header-item site-header-focus-item site-header-item-main-navigation header-navigation-layout-stretch-false header-navigation-layout-fill-stretch-false" data-section="kadence_customizer_primary_navigation">
+		<nav id="site-navigation" class="main-navigation header-navigation hover-to-open nav--toggle-sub header-navigation-style-standard header-navigation-dropdown-animation-none" role="navigation" aria-label="Primary">
+			<div class="primary-menu-container header-menu-container">
+	<ul id="primary-menu" class="menu"><li id="menu-item-519" class="menu-item menu-item-type-taxonomy menu-item-object-category current-post-ancestor current-menu-parent current-post-parent menu-item-519"><a href="https://networkproguide.com/category/networking/">Networking</a></li>
+<li id="menu-item-1196" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-1196"><a href="https://networkproguide.com/category/network-security/">Network Security</a></li>
+<li id="menu-item-520" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-520"><a href="https://networkproguide.com/category/system-administration/">SysAdmin</a></li>
+<li id="menu-item-521" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-521"><a href="https://networkproguide.com/category/virtualization/">Virtualization</a></li>
+<li id="menu-item-501679" class="menu-item menu-item-type-taxonomy menu-item-object-post_tag menu-item-501679"><a href="https://networkproguide.com/tag/cheat-sheet/">Cheat Sheets</a></li>
+</ul>		</div>
+	</nav><!-- #site-navigation -->
+	</div><!-- data-section="primary_navigation" -->
+<div class="site-header-item site-header-focus-item" data-section="kadence_customizer_header_search">
+		<div class="search-toggle-open-container">
+						<button class="search-toggle-open drawer-toggle search-toggle-style-default" aria-label="View Search Form" aria-haspopup="dialog" aria-controls="search-drawer" data-toggle-target="#search-drawer" data-toggle-body-class="showing-popup-drawer-from-full" aria-expanded="false" data-set-focus="#search-drawer .search-field"
+					>
+						<span class="search-toggle-icon"><span class="kadence-svg-iconset"><svg aria-hidden="true" class="kadence-svg-icon kadence-search2-svg" fill="currentColor" version="1.1" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><title>Search</title><path d="M16.041 15.856c-0.034 0.026-0.067 0.055-0.099 0.087s-0.060 0.064-0.087 0.099c-1.258 1.213-2.969 1.958-4.855 1.958-1.933 0-3.682-0.782-4.95-2.050s-2.050-3.017-2.050-4.95 0.782-3.682 2.050-4.95 3.017-2.050 4.95-2.050 3.682 0.782 4.95 2.050 2.050 3.017 2.050 4.95c0 1.886-0.745 3.597-1.959 4.856zM21.707 20.293l-3.675-3.675c1.231-1.54 1.968-3.493 1.968-5.618 0-2.485-1.008-4.736-2.636-6.364s-3.879-2.636-6.364-2.636-4.736 1.008-6.364 2.636-2.636 3.879-2.636 6.364 1.008 4.736 2.636 6.364 3.879 2.636 6.364 2.636c2.125 0 4.078-0.737 5.618-1.968l3.675 3.675c0.391 0.391 1.024 0.391 1.414 0s0.391-1.024 0-1.414z"></path>
+				</svg></span></span>
+		</button>
+	</div>
+	</div><!-- data-section="header_search" -->
+					</div>
+							</div>
+		</div>
+	</div>
+</div>
+				</div>
+			</div>
+					</div>
+	</div>
+	
+<div id="mobile-header" class="site-mobile-header-wrap">
+	<div class="site-header-inner-wrap">
+		<div class="site-header-upper-wrap">
+			<div class="site-header-upper-inner-wrap">
+			<div class="site-main-header-wrap site-header-focus-item site-header-row-layout-standard site-header-row-tablet-layout-default site-header-row-mobile-layout-default ">
+	<div class="site-header-row-container-inner">
+		<div class="site-container">
+			<div class="site-main-header-inner-wrap site-header-row site-header-row-has-sides site-header-row-no-center">
+									<div class="site-header-main-section-left site-header-section site-header-section-left">
+						<div class="site-header-item site-header-focus-item" data-section="title_tagline">
+	<div class="site-branding mobile-site-branding branding-layout-standard branding-tablet-layout-inherit site-brand-logo-only branding-mobile-layout-inherit"><a class="brand has-logo-image" href="https://networkproguide.com/" rel="home"><picture><source srcset="https://networkproguide.com/wp-content/uploads/NPG-LOGO-600-80.webp 600w,https://networkproguide.com/wp-content/uploads/NPG-LOGO-600-80-300x40.webp 300w" sizes="(max-width: 600px) 100vw, 600px" type="image/webp"><img width="600" height="80" src="https://networkproguide.com/wp-content/uploads/NPG-LOGO-600-80.png" class="custom-logo sp-no-webp" alt="NetworkProGuide" decoding="async" srcset="https://networkproguide.com/wp-content/uploads/NPG-LOGO-600-80.png 600w, https://networkproguide.com/wp-content/uploads/NPG-LOGO-600-80-300x40.png 300w" sizes="(max-width: 600px) 100vw, 600px"></picture></a></div></div><!-- data-section="title_tagline" -->
+					</div>
+																	<div class="site-header-main-section-right site-header-section site-header-section-right">
+						<div class="site-header-item site-header-focus-item site-header-item-navgation-popup-toggle" data-section="kadence_customizer_mobile_trigger">
+		<div class="mobile-toggle-open-container">
+						<button id="mobile-toggle" class="menu-toggle-open drawer-toggle menu-toggle-style-default" aria-label="Open menu" data-toggle-target="#mobile-drawer" data-toggle-body-class="showing-popup-drawer-from-right" aria-expanded="false" data-set-focus=".menu-toggle-close"
+					>
+						<span class="menu-toggle-icon"><span class="kadence-svg-iconset"><svg class="kadence-svg-icon kadence-menu2-svg" fill="currentColor" version="1.1" xmlns="http://www.w3.org/2000/svg" width="24" height="28" viewBox="0 0 24 28"><title>Toggle Menu</title><path d="M24 21v2c0 0.547-0.453 1-1 1h-22c-0.547 0-1-0.453-1-1v-2c0-0.547 0.453-1 1-1h22c0.547 0 1 0.453 1 1zM24 13v2c0 0.547-0.453 1-1 1h-22c-0.547 0-1-0.453-1-1v-2c0-0.547 0.453-1 1-1h22c0.547 0 1 0.453 1 1zM24 5v2c0 0.547-0.453 1-1 1h-22c-0.547 0-1-0.453-1-1v-2c0-0.547 0.453-1 1-1h22c0.547 0 1 0.453 1 1z"></path>
+				</svg></span></span>
+		</button>
+	</div>
+	</div><!-- data-section="mobile_trigger" -->
+<div class="site-header-item site-header-focus-item" data-section="kadence_customizer_header_search">
+		<div class="search-toggle-open-container">
+						<button class="search-toggle-open drawer-toggle search-toggle-style-default" aria-label="View Search Form" aria-haspopup="dialog" aria-controls="search-drawer" data-toggle-target="#search-drawer" data-toggle-body-class="showing-popup-drawer-from-full" aria-expanded="false" data-set-focus="#search-drawer .search-field"
+					>
+						<span class="search-toggle-icon"><span class="kadence-svg-iconset"><svg aria-hidden="true" class="kadence-svg-icon kadence-search2-svg" fill="currentColor" version="1.1" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><title>Search</title><path d="M16.041 15.856c-0.034 0.026-0.067 0.055-0.099 0.087s-0.060 0.064-0.087 0.099c-1.258 1.213-2.969 1.958-4.855 1.958-1.933 0-3.682-0.782-4.95-2.050s-2.050-3.017-2.050-4.95 0.782-3.682 2.050-4.95 3.017-2.050 4.95-2.050 3.682 0.782 4.95 2.050 2.050 3.017 2.050 4.95c0 1.886-0.745 3.597-1.959 4.856zM21.707 20.293l-3.675-3.675c1.231-1.54 1.968-3.493 1.968-5.618 0-2.485-1.008-4.736-2.636-6.364s-3.879-2.636-6.364-2.636-4.736 1.008-6.364 2.636-2.636 3.879-2.636 6.364 1.008 4.736 2.636 6.364 3.879 2.636 6.364 2.636c2.125 0 4.078-0.737 5.618-1.968l3.675 3.675c0.391 0.391 1.024 0.391 1.414 0s0.391-1.024 0-1.414z"></path>
+				</svg></span></span>
+		</button>
+	</div>
+	</div><!-- data-section="header_search" -->
+					</div>
+							</div>
+		</div>
+	</div>
+</div>
+			</div>
+		</div>
+			</div>
+</div>
+</header><!-- #masthead -->
+
+	<main id="inner-wrap" class="wrap kt-clear" role="main">
+		<div id="primary" class="content-area">
+	<div class="content-container site-container">
+		<div id="main" class="site-main">
+						<div class="content-wrap">
+				<article id="post-1001985" class="entry content-bg single-entry post-1001985 post type-post status-publish format-standard has-post-thumbnail hentry category-networking tag-aws tag-cloud tag-vpc grow-content-main">
+	<div class="entry-content-wrap">
+		<header class="entry-header post-title title-align-left title-tablet-align-inherit title-mobile-align-inherit">
+	<div class="kadence-breadcrumbs rankmath-bc-wrap"><nav aria-label="breadcrumbs" class="rank-math-breadcrumb"><p><a href="https://networkproguide.com">Home</a><span class="separator"> / </span><a href="https://networkproguide.com/category/networking/">Networking</a><span class="separator"> / </span><span class="last">How to Create AWS VPC Peering Connection Step-by-Step</span></p></nav></div><h1 class="entry-title">How to Create AWS VPC Peering Connection Step-by-Step</h1><div class="entry-meta entry-meta-divider-customicon">
+	<span class="posted-by"><span class="meta-label">By</span><span class="author vcard"><a class="url fn n" href="https://networkproguide.com/author/akrur/">Akrur Neupane</a></span></span>					<span class="updated-on">
+						<span class="kadence-svg-iconset"><svg class="kadence-svg-icon kadence-hours-alt-svg" fill="currentColor" version="1.1" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><title>Hours</title><path d="M23 12c0-3.037-1.232-5.789-3.222-7.778s-4.741-3.222-7.778-3.222-5.789 1.232-7.778 3.222-3.222 4.741-3.222 7.778 1.232 5.789 3.222 7.778 4.741 3.222 7.778 3.222 5.789-1.232 7.778-3.222 3.222-4.741 3.222-7.778zM21 12c0 2.486-1.006 4.734-2.636 6.364s-3.878 2.636-6.364 2.636-4.734-1.006-6.364-2.636-2.636-3.878-2.636-6.364 1.006-4.734 2.636-6.364 3.878-2.636 6.364-2.636 4.734 1.006 6.364 2.636 2.636 3.878 2.636 6.364zM11 6v6c0 0.389 0.222 0.727 0.553 0.894l4 2c0.494 0.247 1.095 0.047 1.342-0.447s0.047-1.095-0.447-1.342l-3.448-1.723v-5.382c0-0.552-0.448-1-1-1s-1 0.448-1 1z"></path>
+				</svg></span><span class="meta-label">Updated on</span><time class="entry-date published updated" datetime="2024-05-31T07:11:56-05:00" itemprop="dateModified">May 31, 2024</time>					</span>
+										<span class="category-links">
+						<span class="kadence-svg-iconset"><svg class="kadence-svg-icon kadence-comments-svg" fill="currentColor" version="1.1" xmlns="http://www.w3.org/2000/svg" width="26" height="28" viewBox="0 0 26 28"><title>Categories</title><path d="M24 20.5v-11c0-0.828-0.672-1.5-1.5-1.5h-11c-0.828 0-1.5-0.672-1.5-1.5v-1c0-0.828-0.672-1.5-1.5-1.5h-5c-0.828 0-1.5 0.672-1.5 1.5v15c0 0.828 0.672 1.5 1.5 1.5h19c0.828 0 1.5-0.672 1.5-1.5zM26 9.5v11c0 1.922-1.578 3.5-3.5 3.5h-19c-1.922 0-3.5-1.578-3.5-3.5v-15c0-1.922 1.578-3.5 3.5-3.5h5c1.922 0 3.5 1.578 3.5 3.5v0.5h10.5c1.922 0 3.5 1.578 3.5 3.5z"></path>
+				</svg></span><span class="category-link-items"><a href="https://networkproguide.com/category/networking/" rel="category tag">Networking</a></span>					</span>
+					</div><!-- .entry-meta -->
+</header><!-- .entry-header -->
+
+<div class="entry-content single-content">
+	
+<p class="wp-block-paragraph"><a href="https://docs.aws.amazon.com/vpc/latest/peering/create-vpc-peering-connection.html" target="_blank" rel="noopener">VPC peering</a> allows you to connect two VPCs in the same or different AWS accounts. It operates over the AWS network backbone, ensuring low-latency and high-bandwidth communication between the peered VPCs.</p>
+
+
+
+<p class="wp-block-paragraph">When you create a VPC peering connection, you need to choose the &#8220;Requester VPC&#8221; and &#8220;Accepter VPC.&#8221; The requester initiates the peering request, while the accepter approves it. This bidirectional connection enables private IP address communication between instances in the peered VPCs.</p>
+
+
+
+<figure class="wp-block-image size-full"><picture><source srcset="https://networkproguide.com/wp-content/uploads/aws-vpc-peering-diagram.webp 981w,https://networkproguide.com/wp-content/uploads/aws-vpc-peering-diagram-300x132.webp 300w,https://networkproguide.com/wp-content/uploads/aws-vpc-peering-diagram-768x337.webp 768w" sizes="(max-width: 981px) 100vw, 981px" type="image/webp"><img fetchpriority="high" decoding="async" width="981" height="431" src="https://networkproguide.com/wp-content/uploads/aws-vpc-peering-diagram.png" alt="Diagram showing VPC Peering setup on Amazon AWS" class="wp-image-1001986 sp-no-webp" srcset="https://networkproguide.com/wp-content/uploads/aws-vpc-peering-diagram.png 981w, https://networkproguide.com/wp-content/uploads/aws-vpc-peering-diagram-300x132.png 300w, https://networkproguide.com/wp-content/uploads/aws-vpc-peering-diagram-768x337.png 768w" sizes="(max-width: 981px) 100vw, 981px"></picture></figure>
+
+
+
+<p class="wp-block-paragraph">Regarding VPC peering in AWS cloud, there are several options and circumstances:</p>
+
+
+
+<ul class="wp-block-list">
+<li>Two or more VPCs can be connected to one another within the same account.</li>
+
+
+
+<li>Two or more VPCs in different AWS accounts can be connected.</li>
+
+
+
+<li>You can establish peering relationships between VPCs in the same account across different AWS Regions.</li>
+
+
+
+<li>You can establish peering relationships between VPCs in the different accounts across the same AWS Region.</li>
+</ul>
+
+
+
+<h2 class="wp-block-heading">Steps for creating VPC Peering in AWS</h2>
+
+
+
+<h3 class="wp-block-heading">Step 1. Create two VPC</h3>
+
+
+
+<p class="wp-block-paragraph">You need to have two VPCs. If you don&#8217;t have two VPCs then you can <a href="https://networkproguide.com/how-to-create-vpc-on-aws/" data-type="post" data-id="1001842">learn how to create VPCs here</a>. As you can see I have my two VPCs. One is the requester VPC and another is the accepter VPC. <em>(Just make sure that you use different, non-overlapping subnets for the 2 VPC.)</em></p>
+
+
+
+<figure class="wp-block-image size-large"><picture><source srcset="https://networkproguide.com/wp-content/uploads/two-different-aws-vpc-creating-peering-1024x525.webp 1024w,https://networkproguide.com/wp-content/uploads/two-different-aws-vpc-creating-peering-300x154.webp 300w,https://networkproguide.com/wp-content/uploads/two-different-aws-vpc-creating-peering-768x394.webp 768w,https://networkproguide.com/wp-content/uploads/two-different-aws-vpc-creating-peering-1536x788.webp 1536w,https://networkproguide.com/wp-content/uploads/two-different-aws-vpc-creating-peering.webp 1600w" sizes="(max-width: 1024px) 100vw, 1024px" type="image/webp"><img decoding="async" width="1024" height="525" src="https://networkproguide.com/wp-content/uploads/two-different-aws-vpc-creating-peering-1024x525.jpg" alt="Screenshot showing two different VPC for creating VPC peering on AWS." class="wp-image-1001987 sp-no-webp" srcset="https://networkproguide.com/wp-content/uploads/two-different-aws-vpc-creating-peering-1024x525.jpg 1024w, https://networkproguide.com/wp-content/uploads/two-different-aws-vpc-creating-peering-300x154.jpg 300w, https://networkproguide.com/wp-content/uploads/two-different-aws-vpc-creating-peering-768x394.jpg 768w, https://networkproguide.com/wp-content/uploads/two-different-aws-vpc-creating-peering-1536x788.jpg 1536w, https://networkproguide.com/wp-content/uploads/two-different-aws-vpc-creating-peering.jpg 1600w" sizes="(max-width: 1024px) 100vw, 1024px"></picture></figure>
+
+
+
+<h3 class="wp-block-heading">Step 2. Navigate to the VPC Dashboard</h3>
+
+
+
+<p class="wp-block-paragraph">Open the Amazon VPC dashboard where you can manage VPC configurations.</p>
+
+
+
+<p class="wp-block-paragraph">Click on &#8220;Peering Connections&#8221; in the left-hand navigation pane.</p>
+
+
+
+<p class="wp-block-paragraph">Click the &#8220;Create Peering Connection&#8221; button.</p>
+
+
+
+<figure class="wp-block-image size-large"><picture><source srcset="https://networkproguide.com/wp-content/uploads/aws-create-peering-connection-1024x521.webp 1024w,https://networkproguide.com/wp-content/uploads/aws-create-peering-connection-300x153.webp 300w,https://networkproguide.com/wp-content/uploads/aws-create-peering-connection-768x390.webp 768w,https://networkproguide.com/wp-content/uploads/aws-create-peering-connection-1536x781.webp 1536w,https://networkproguide.com/wp-content/uploads/aws-create-peering-connection.webp 1600w" sizes="(max-width: 1024px) 100vw, 1024px" type="image/webp"><img decoding="async" width="1024" height="521" src="https://networkproguide.com/wp-content/uploads/aws-create-peering-connection-1024x521.jpg" alt="Screenshot showing creating VPC Peering Connection" class="wp-image-1001988 sp-no-webp" srcset="https://networkproguide.com/wp-content/uploads/aws-create-peering-connection-1024x521.jpg 1024w, https://networkproguide.com/wp-content/uploads/aws-create-peering-connection-300x153.jpg 300w, https://networkproguide.com/wp-content/uploads/aws-create-peering-connection-768x390.jpg 768w, https://networkproguide.com/wp-content/uploads/aws-create-peering-connection-1536x781.jpg 1536w, https://networkproguide.com/wp-content/uploads/aws-create-peering-connection.jpg 1600w" sizes="(max-width: 1024px) 100vw, 1024px"></picture></figure>
+
+
+
+<p class="wp-block-paragraph">Type the name of the peering connection.</p>
+
+
+
+<p class="wp-block-paragraph">Select the Requester VPC from the dropdown menu.</p>
+
+
+
+<figure class="wp-block-image size-large"><picture><source srcset="https://networkproguide.com/wp-content/uploads/aws-selecting-requester-vpc-1024x522.webp 1024w,https://networkproguide.com/wp-content/uploads/aws-selecting-requester-vpc-300x153.webp 300w,https://networkproguide.com/wp-content/uploads/aws-selecting-requester-vpc-768x391.webp 768w,https://networkproguide.com/wp-content/uploads/aws-selecting-requester-vpc-1536x782.webp 1536w,https://networkproguide.com/wp-content/uploads/aws-selecting-requester-vpc.webp 1600w" sizes="auto, (max-width: 1024px) 100vw, 1024px" type="image/webp"><img loading="lazy" decoding="async" width="1024" height="522" src="https://networkproguide.com/wp-content/uploads/aws-selecting-requester-vpc-1024x522.jpg" alt="Screenshot showing selecting Requester VPC" class="wp-image-1001989 sp-no-webp" srcset="https://networkproguide.com/wp-content/uploads/aws-selecting-requester-vpc-1024x522.jpg 1024w, https://networkproguide.com/wp-content/uploads/aws-selecting-requester-vpc-300x153.jpg 300w, https://networkproguide.com/wp-content/uploads/aws-selecting-requester-vpc-768x391.jpg 768w, https://networkproguide.com/wp-content/uploads/aws-selecting-requester-vpc-1536x782.jpg 1536w, https://networkproguide.com/wp-content/uploads/aws-selecting-requester-vpc.jpg 1600w" sizes="auto, (max-width: 1024px) 100vw, 1024px"></picture></figure>
+
+
+
+<p class="wp-block-paragraph">Also, select the Accepter VPC from the dropdown menu. <em>(If you want to add an accepter from another region then click on “Another Region” or if the VPC is from another account click on “Another Account” and fill in the details required.)</em></p>
+
+
+
+<p class="wp-block-paragraph">Click on “Create peering connection.”</p>
+
+
+
+<figure class="wp-block-image size-large"><picture><source srcset="https://networkproguide.com/wp-content/uploads/aws-selecting-accepter-vpc-creating-connection-1024x520.webp 1024w,https://networkproguide.com/wp-content/uploads/aws-selecting-accepter-vpc-creating-connection-300x152.webp 300w,https://networkproguide.com/wp-content/uploads/aws-selecting-accepter-vpc-creating-connection-768x390.webp 768w,https://networkproguide.com/wp-content/uploads/aws-selecting-accepter-vpc-creating-connection-1536x781.webp 1536w,https://networkproguide.com/wp-content/uploads/aws-selecting-accepter-vpc-creating-connection.webp 1600w" sizes="auto, (max-width: 1024px) 100vw, 1024px" type="image/webp"><img loading="lazy" decoding="async" width="1024" height="520" src="https://networkproguide.com/wp-content/uploads/aws-selecting-accepter-vpc-creating-connection-1024x520.png" alt="Screenshot showing selecting accepter VPC and Creating peering connection" class="wp-image-1001990 sp-no-webp" srcset="https://networkproguide.com/wp-content/uploads/aws-selecting-accepter-vpc-creating-connection-1024x520.png 1024w, https://networkproguide.com/wp-content/uploads/aws-selecting-accepter-vpc-creating-connection-300x152.png 300w, https://networkproguide.com/wp-content/uploads/aws-selecting-accepter-vpc-creating-connection-768x390.png 768w, https://networkproguide.com/wp-content/uploads/aws-selecting-accepter-vpc-creating-connection-1536x781.png 1536w, https://networkproguide.com/wp-content/uploads/aws-selecting-accepter-vpc-creating-connection.png 1600w" sizes="auto, (max-width: 1024px) 100vw, 1024px"></picture></figure>
+
+
+
+<p class="wp-block-paragraph">Now you will see the message for connection request.</p>
+
+
+
+<figure class="wp-block-image size-large"><picture><source srcset="https://networkproguide.com/wp-content/uploads/aws-success-message-vpc-peering-request-1024x528.webp 1024w,https://networkproguide.com/wp-content/uploads/aws-success-message-vpc-peering-request-300x155.webp 300w,https://networkproguide.com/wp-content/uploads/aws-success-message-vpc-peering-request-768x396.webp 768w,https://networkproguide.com/wp-content/uploads/aws-success-message-vpc-peering-request-1536x792.webp 1536w,https://networkproguide.com/wp-content/uploads/aws-success-message-vpc-peering-request.webp 1600w" sizes="auto, (max-width: 1024px) 100vw, 1024px" type="image/webp"><img loading="lazy" decoding="async" width="1024" height="528" src="https://networkproguide.com/wp-content/uploads/aws-success-message-vpc-peering-request-1024x528.png" alt="Screenshot showing success message for vpc-peering request" class="wp-image-1001991 sp-no-webp" srcset="https://networkproguide.com/wp-content/uploads/aws-success-message-vpc-peering-request-1024x528.png 1024w, https://networkproguide.com/wp-content/uploads/aws-success-message-vpc-peering-request-300x155.png 300w, https://networkproguide.com/wp-content/uploads/aws-success-message-vpc-peering-request-768x396.png 768w, https://networkproguide.com/wp-content/uploads/aws-success-message-vpc-peering-request-1536x792.png 1536w, https://networkproguide.com/wp-content/uploads/aws-success-message-vpc-peering-request.png 1600w" sizes="auto, (max-width: 1024px) 100vw, 1024px"></picture></figure>
+
+
+
+<h3 class="wp-block-heading">Step 3. Accepting the VPC Peering Request</h3>
+
+
+
+<p class="wp-block-paragraph">Click on the Action Button and Select “Accept Request.” <em>(If you have a different region and different account, switch to the respective VPC Peering Connection tab and Accept the request.)</em></p>
+
+
+
+<figure class="wp-block-image size-large"><picture><source srcset="https://networkproguide.com/wp-content/uploads/aws-accepting-vpc-connection-request-1024x528.webp 1024w,https://networkproguide.com/wp-content/uploads/aws-accepting-vpc-connection-request-300x155.webp 300w,https://networkproguide.com/wp-content/uploads/aws-accepting-vpc-connection-request-768x396.webp 768w,https://networkproguide.com/wp-content/uploads/aws-accepting-vpc-connection-request-1536x792.webp 1536w,https://networkproguide.com/wp-content/uploads/aws-accepting-vpc-connection-request.webp 1600w" sizes="auto, (max-width: 1024px) 100vw, 1024px" type="image/webp"><img loading="lazy" decoding="async" width="1024" height="528" src="https://networkproguide.com/wp-content/uploads/aws-accepting-vpc-connection-request-1024x528.png" alt="Screenshot showing accepting the vpc-peering connection request" class="wp-image-1001992 sp-no-webp" srcset="https://networkproguide.com/wp-content/uploads/aws-accepting-vpc-connection-request-1024x528.png 1024w, https://networkproguide.com/wp-content/uploads/aws-accepting-vpc-connection-request-300x155.png 300w, https://networkproguide.com/wp-content/uploads/aws-accepting-vpc-connection-request-768x396.png 768w, https://networkproguide.com/wp-content/uploads/aws-accepting-vpc-connection-request-1536x792.png 1536w, https://networkproguide.com/wp-content/uploads/aws-accepting-vpc-connection-request.png 1600w" sizes="auto, (max-width: 1024px) 100vw, 1024px"></picture></figure>
+
+
+
+<p class="wp-block-paragraph">You will see the success message after that.</p>
+
+
+
+<figure class="wp-block-image size-large"><picture><source srcset="https://networkproguide.com/wp-content/uploads/aws-success-message-vpc-peering-1024x537.webp 1024w,https://networkproguide.com/wp-content/uploads/aws-success-message-vpc-peering-300x157.webp 300w,https://networkproguide.com/wp-content/uploads/aws-success-message-vpc-peering-768x403.webp 768w,https://networkproguide.com/wp-content/uploads/aws-success-message-vpc-peering-1536x805.webp 1536w,https://networkproguide.com/wp-content/uploads/aws-success-message-vpc-peering.webp 1600w" sizes="auto, (max-width: 1024px) 100vw, 1024px" type="image/webp"><img loading="lazy" decoding="async" width="1024" height="537" src="https://networkproguide.com/wp-content/uploads/aws-success-message-vpc-peering-1024x537.png" alt="Screenshot showing success message of VPC peering" class="wp-image-1001993 sp-no-webp" srcset="https://networkproguide.com/wp-content/uploads/aws-success-message-vpc-peering-1024x537.png 1024w, https://networkproguide.com/wp-content/uploads/aws-success-message-vpc-peering-300x157.png 300w, https://networkproguide.com/wp-content/uploads/aws-success-message-vpc-peering-768x403.png 768w, https://networkproguide.com/wp-content/uploads/aws-success-message-vpc-peering-1536x805.png 1536w, https://networkproguide.com/wp-content/uploads/aws-success-message-vpc-peering.png 1600w" sizes="auto, (max-width: 1024px) 100vw, 1024px"></picture></figure>
+
+
+
+<p class="wp-block-paragraph">Copy the VPC peering id (i.e pcx-XXXXXX), we will need that later.</p>
+
+
+
+<h3 class="wp-block-heading">Step 4. Modify Route Tables of Requester and Accepter VPC</h3>
+
+
+
+<p class="wp-block-paragraph">Click on&nbsp; &#8220;Modify my route table now&#8221; from the success message box.</p>
+
+
+
+<figure class="wp-block-image size-large"><picture><source srcset="https://networkproguide.com/wp-content/uploads/aws-modifying-vpc-route-tables-1024x523.webp 1024w,https://networkproguide.com/wp-content/uploads/aws-modifying-vpc-route-tables-300x153.webp 300w,https://networkproguide.com/wp-content/uploads/aws-modifying-vpc-route-tables-768x392.webp 768w,https://networkproguide.com/wp-content/uploads/aws-modifying-vpc-route-tables-1536x784.webp 1536w,https://networkproguide.com/wp-content/uploads/aws-modifying-vpc-route-tables.webp 1600w" sizes="auto, (max-width: 1024px) 100vw, 1024px" type="image/webp"><img loading="lazy" decoding="async" width="1024" height="523" src="https://networkproguide.com/wp-content/uploads/aws-modifying-vpc-route-tables-1024x523.png" alt="Screenshot showing modifying the route tables for the VPC peering connections in the AWS dashboard." class="wp-image-1001994 sp-no-webp" srcset="https://networkproguide.com/wp-content/uploads/aws-modifying-vpc-route-tables-1024x523.png 1024w, https://networkproguide.com/wp-content/uploads/aws-modifying-vpc-route-tables-300x153.png 300w, https://networkproguide.com/wp-content/uploads/aws-modifying-vpc-route-tables-768x392.png 768w, https://networkproguide.com/wp-content/uploads/aws-modifying-vpc-route-tables-1536x784.png 1536w, https://networkproguide.com/wp-content/uploads/aws-modifying-vpc-route-tables.png 1600w" sizes="auto, (max-width: 1024px) 100vw, 1024px"></picture></figure>
+
+
+
+<p class="wp-block-paragraph">Select the Accepter VPC Route Table and Click on “Edit Routes.”</p>
+
+
+
+<figure class="wp-block-image size-large"><picture><source srcset="https://networkproguide.com/wp-content/uploads/aws-vpc-editing-route-tables-1024x529.webp 1024w,https://networkproguide.com/wp-content/uploads/aws-vpc-editing-route-tables-300x155.webp 300w,https://networkproguide.com/wp-content/uploads/aws-vpc-editing-route-tables-768x396.webp 768w,https://networkproguide.com/wp-content/uploads/aws-vpc-editing-route-tables-1536x793.webp 1536w,https://networkproguide.com/wp-content/uploads/aws-vpc-editing-route-tables.webp 1600w" sizes="auto, (max-width: 1024px) 100vw, 1024px" type="image/webp"><img loading="lazy" decoding="async" width="1024" height="529" src="https://networkproguide.com/wp-content/uploads/aws-vpc-editing-route-tables-1024x529.png" alt="Screenshot showing editing the routes for the VPC connection" class="wp-image-1001995 sp-no-webp" srcset="https://networkproguide.com/wp-content/uploads/aws-vpc-editing-route-tables-1024x529.png 1024w, https://networkproguide.com/wp-content/uploads/aws-vpc-editing-route-tables-300x155.png 300w, https://networkproguide.com/wp-content/uploads/aws-vpc-editing-route-tables-768x396.png 768w, https://networkproguide.com/wp-content/uploads/aws-vpc-editing-route-tables-1536x793.png 1536w, https://networkproguide.com/wp-content/uploads/aws-vpc-editing-route-tables.png 1600w" sizes="auto, (max-width: 1024px) 100vw, 1024px"></picture></figure>
+
+
+
+<p class="wp-block-paragraph">Now click on “Add route.”</p>
+
+
+
+<p class="wp-block-paragraph">In the “Designation” add the <a href="https://networkproguide.com/cidr-subnet-mask-ipv4-cheat-sheet/" data-type="post" data-id="1822">CIDR</a> of Requester VPC and in the “Target” add the VPC Peering ID that we have copied from above.</p>
+
+
+
+<figure class="wp-block-image size-large"><picture><source srcset="https://networkproguide.com/wp-content/uploads/adding-peering-connection-route-aws-1024x512.webp 1024w,https://networkproguide.com/wp-content/uploads/adding-peering-connection-route-aws-300x150.webp 300w,https://networkproguide.com/wp-content/uploads/adding-peering-connection-route-aws-768x384.webp 768w,https://networkproguide.com/wp-content/uploads/adding-peering-connection-route-aws-1536x768.webp 1536w,https://networkproguide.com/wp-content/uploads/adding-peering-connection-route-aws.webp 1600w" sizes="auto, (max-width: 1024px) 100vw, 1024px" type="image/webp"><img loading="lazy" decoding="async" width="1024" height="512" src="https://networkproguide.com/wp-content/uploads/adding-peering-connection-route-aws-1024x512.png" alt="Screenshot showing adding VPC peering connection " class="wp-image-1001996 sp-no-webp" srcset="https://networkproguide.com/wp-content/uploads/adding-peering-connection-route-aws-1024x512.png 1024w, https://networkproguide.com/wp-content/uploads/adding-peering-connection-route-aws-300x150.png 300w, https://networkproguide.com/wp-content/uploads/adding-peering-connection-route-aws-768x384.png 768w, https://networkproguide.com/wp-content/uploads/adding-peering-connection-route-aws-1536x768.png 1536w, https://networkproguide.com/wp-content/uploads/adding-peering-connection-route-aws.png 1600w" sizes="auto, (max-width: 1024px) 100vw, 1024px"></picture></figure>
+
+
+
+<p class="wp-block-paragraph">Click on “Save Changes.”</p>
+
+
+
+<p class="wp-block-paragraph">Now also select the Requester VPC route table and add the CIDR of Accepter and VPC Peering ID as above.&nbsp;</p>
+
+
+
+<h3 class="wp-block-heading">Step 5. Check the Peering Status</h3>
+
+
+
+<p class="wp-block-paragraph">Return to the VPC Dashboard.</p>
+
+
+
+<p class="wp-block-paragraph">Verify that the peering status is &#8220;active.&#8221;</p>
+
+
+
+<h3 class="wp-block-heading">Step 6. Testing the connection</h3>
+
+
+
+<p class="wp-block-paragraph">To test the connection I have created two instances, in Requester VPC and in Accepter VPC. Both of them have public and private IP. Then I will curl the accepter instance from the requester instance through the private IP of the accepter instance.</p>
+
+
+
+<figure class="wp-block-image size-large"><picture><source srcset="https://networkproguide.com/wp-content/uploads/aws-requester-vpc-instance-public-ip-1024x498.webp 1024w,https://networkproguide.com/wp-content/uploads/aws-requester-vpc-instance-public-ip-300x146.webp 300w,https://networkproguide.com/wp-content/uploads/aws-requester-vpc-instance-public-ip-768x374.webp 768w,https://networkproguide.com/wp-content/uploads/aws-requester-vpc-instance-public-ip-1536x747.webp 1536w,https://networkproguide.com/wp-content/uploads/aws-requester-vpc-instance-public-ip.webp 1600w" sizes="auto, (max-width: 1024px) 100vw, 1024px" type="image/webp"><img loading="lazy" decoding="async" width="1024" height="498" src="https://networkproguide.com/wp-content/uploads/aws-requester-vpc-instance-public-ip-1024x498.png" alt="Screenshot showing requester VPC instance with Public IP " class="wp-image-1001997 sp-no-webp" srcset="https://networkproguide.com/wp-content/uploads/aws-requester-vpc-instance-public-ip-1024x498.png 1024w, https://networkproguide.com/wp-content/uploads/aws-requester-vpc-instance-public-ip-300x146.png 300w, https://networkproguide.com/wp-content/uploads/aws-requester-vpc-instance-public-ip-768x374.png 768w, https://networkproguide.com/wp-content/uploads/aws-requester-vpc-instance-public-ip-1536x747.png 1536w, https://networkproguide.com/wp-content/uploads/aws-requester-vpc-instance-public-ip.png 1600w" sizes="auto, (max-width: 1024px) 100vw, 1024px"></picture></figure>
+
+
+
+<figure class="wp-block-image size-large"><picture><source srcset="https://networkproguide.com/wp-content/uploads/aws-acceptor-vpc-instance-public-private-ip-1024x498.webp 1024w,https://networkproguide.com/wp-content/uploads/aws-acceptor-vpc-instance-public-private-ip-300x146.webp 300w,https://networkproguide.com/wp-content/uploads/aws-acceptor-vpc-instance-public-private-ip-768x374.webp 768w,https://networkproguide.com/wp-content/uploads/aws-acceptor-vpc-instance-public-private-ip-1536x747.webp 1536w,https://networkproguide.com/wp-content/uploads/aws-acceptor-vpc-instance-public-private-ip.webp 1600w" sizes="auto, (max-width: 1024px) 100vw, 1024px" type="image/webp"><img loading="lazy" decoding="async" width="1024" height="498" src="https://networkproguide.com/wp-content/uploads/aws-acceptor-vpc-instance-public-private-ip-1024x498.png" alt="Screenshot showing accepter VPC instance with Public and Private  IP" class="wp-image-1001998 sp-no-webp" srcset="https://networkproguide.com/wp-content/uploads/aws-acceptor-vpc-instance-public-private-ip-1024x498.png 1024w, https://networkproguide.com/wp-content/uploads/aws-acceptor-vpc-instance-public-private-ip-300x146.png 300w, https://networkproguide.com/wp-content/uploads/aws-acceptor-vpc-instance-public-private-ip-768x374.png 768w, https://networkproguide.com/wp-content/uploads/aws-acceptor-vpc-instance-public-private-ip-1536x747.png 1536w, https://networkproguide.com/wp-content/uploads/aws-acceptor-vpc-instance-public-private-ip.png 1600w" sizes="auto, (max-width: 1024px) 100vw, 1024px"></picture></figure>
+
+
+
+<p class="wp-block-paragraph">The user script data that I have used while launching the instance is:</p>
+
+
+
+<pre class="wp-block-preformatted">#!/bin/bash
+
+apt update
+
+apt install -y apache2
+
+systemctl start apache2
+
+systemctl enable apache2
+
+echo "Hello world from $(hostname -f)" &gt; /var/www/html/index.html</pre>
+
+
+
+<p class="wp-block-paragraph">I will now ssh to the Requester VPC instance and curl the instance in Accepter VPC through its Private IP.</p>
+
+
+
+<figure class="wp-block-image size-large"><picture><source srcset="https://networkproguide.com/wp-content/uploads/aws-curl-instance-public-private-ip-1024x501.webp 1024w,https://networkproguide.com/wp-content/uploads/aws-curl-instance-public-private-ip-300x147.webp 300w,https://networkproguide.com/wp-content/uploads/aws-curl-instance-public-private-ip-768x376.webp 768w,https://networkproguide.com/wp-content/uploads/aws-curl-instance-public-private-ip-1536x751.webp 1536w,https://networkproguide.com/wp-content/uploads/aws-curl-instance-public-private-ip.webp 1600w" sizes="auto, (max-width: 1024px) 100vw, 1024px" type="image/webp"><img loading="lazy" decoding="async" width="1024" height="501" src="https://networkproguide.com/wp-content/uploads/aws-curl-instance-public-private-ip-1024x501.png" alt="Screenshot showing how to curl the instance through both public and private ip to verify the connection is working." class="wp-image-1001999 sp-no-webp" srcset="https://networkproguide.com/wp-content/uploads/aws-curl-instance-public-private-ip-1024x501.png 1024w, https://networkproguide.com/wp-content/uploads/aws-curl-instance-public-private-ip-300x147.png 300w, https://networkproguide.com/wp-content/uploads/aws-curl-instance-public-private-ip-768x376.png 768w, https://networkproguide.com/wp-content/uploads/aws-curl-instance-public-private-ip-1536x751.png 1536w, https://networkproguide.com/wp-content/uploads/aws-curl-instance-public-private-ip.png 1600w" sizes="auto, (max-width: 1024px) 100vw, 1024px"></picture></figure>
+
+
+
+<p class="wp-block-paragraph">We have successfully created VPC peering between two VPC. Then we have also tested it by launching EC2 on each VPC by doing the curl on the accepter VPC using private ip.&nbsp;</p>
+
+
+
+<h2 class="wp-block-heading">Steps for deleting a VPC peering connection</h2>
+
+
+
+<p class="wp-block-paragraph">When a peering connection is no longer needed, it’s a best practice to delete it. VPC connections left active that are no longer necessary are a security concern and could incur unnecessary costs, depending on the setup, among other things. <a href="https://docs.aws.amazon.com/vpc/latest/peering/delete-vpc-peering-connection.html" target="_blank" rel="noopener">Deleting a VPC</a> Peering Connection in AWS is a straightforward process and involves just a few steps.</p>
+
+
+
+<p class="wp-block-paragraph"><strong>Note: </strong>You can delete a VPC peering connection from either the requester VPC or the accepter VPC. Deleting a VPC peering connection is a significant action that will stop all traffic between the VPCs. It should only be done when necessary and after considering the implications.</p>
+
+
+
+<h3 class="wp-block-heading">Step 1. Open the Amazon VPC console</h3>
+
+
+
+<p class="wp-block-paragraph">You can access this directly through the link <a href="https://console.aws.amazon.com/vpc/" target="_blank" rel="noopener">https://console.aws.amazon.com/vpc/</a> or by searching for VPC in the AWS Management Console search bar.</p>
+
+
+
+<h3 class="wp-block-heading">Step 2. Go to the &#8216;Peering Connections&#8217; section</h3>
+
+
+
+<p class="wp-block-paragraph">In the navigation pane, click on &#8216;Peering Connections&#8217;.</p>
+
+
+
+<h3 class="wp-block-heading">Step 3. Select the VPC Peering Connection</h3>
+
+
+
+<p class="wp-block-paragraph">You&#8217;ll see a list of your existing VPC Peering Connections. Select the one that you want to delete.</p>
+
+
+
+<h3 class="wp-block-heading">Step 4. Delete the VPC Peering Connection</h3>
+
+
+
+<p class="wp-block-paragraph">After selecting the VPC Peering Connection, click on &#8216;Actions&#8217; and then &#8216;Delete VPC Peering Connection&#8217;.</p>
+
+
+
+<h3 class="wp-block-heading">Step 5. Confirm the deletion</h3>
+
+
+
+<p class="wp-block-paragraph">A confirmation dialogue box will appear. Confirm the deletion by clicking &#8216;Yes, Delete&#8217;.</p>
+
+
+
+<p class="wp-block-paragraph">After the VPC Peering Connection is deleted, you won&#8217;t be able to reinstate it. You&#8217;ll need to create a new VPC Peering Connection if you want to re-establish the link.</p>
+
+
+
+<p class="wp-block-paragraph"><strong>Important Note:</strong> Deleting a VPC Peering Connection <strong>does not</strong> automatically update the route tables. You must manually remove any routes in your route tables that point to the deleted VPC peering connection. If you don&#8217;t, the routes will remain, but will be inactive.</p>
+
+
+
+<p class="wp-block-paragraph">To remove the routes, navigate to the &#8216;Route Tables&#8217; section in the VPC console, select the route table, and then the &#8216;Routes&#8217; tab. Select the route that points to the VPC peering connection and click &#8216;Delete&#8217;. Confirm the deletion when prompted. Repeat this for each route in every route table that points to the deleted VPC peering connection.</p>
+
+
+
+<h2 class="wp-block-heading">AWS VPC Peering Best Practices</h2>
+
+
+
+<p class="wp-block-paragraph">When implementing Virtual Private Cloud (VPC) peering on Amazon Web Services (AWS), there are several best practices to consider. Every architecture is unique, so these best practices should be adapted based on your specific requirements and the nature of your workloads.</p>
+
+
+
+<h3 class="wp-block-heading">Non-Overlapping IP Addresses</h3>
+
+
+
+<p class="wp-block-paragraph">Make sure the CIDR blocks (IP address ranges) for the VPCs being peered do not overlap. VPCs with overlapping CIDR blocks can&#8217;t be peered together. This is a limitation of routing.</p>
+
+
+
+<h3 class="wp-block-heading">Use Smallest Possible CIDR Block</h3>
+
+
+
+<p class="wp-block-paragraph">Allocate the smallest possible CIDR block that will meet your current and foreseeable future needs. This is important to ensure that you don&#8217;t run out of available CIDR blocks for peering.</p>
+
+
+
+<h3 class="wp-block-heading">Efficient Route Tables</h3>
+
+
+
+<p class="wp-block-paragraph">Optimize route tables in each VPC to manage the flow of traffic. Only add the necessary routes to your route tables.</p>
+
+
+
+<h3 class="wp-block-heading">Security Group and Network ACL Management</h3>
+
+
+
+<p class="wp-block-paragraph">Use security groups and network ACLs to control inbound and outbound traffic between the peered VPCs. Make sure the rules are properly set up to allow necessary traffic and deny unnecessary or potentially malicious traffic.</p>
+
+
+
+<h3 class="wp-block-heading">Use DNS Names</h3>
+
+
+
+<p class="wp-block-paragraph">Enable DNS resolution for peering connections if the applications communicate using DNS names. This way, applications can use DNS hostnames to communicate with each other.</p>
+
+
+
+<h3 class="wp-block-heading">Plan for Region Considerations</h3>
+
+
+
+<p class="wp-block-paragraph">If you have VPCs in different regions and they need to communicate with each other, remember that inter-region VPC peering will have additional data transfer costs compared to intra-region peering.</p>
+
+
+
+<h3 class="wp-block-heading">Limit VPC Peering Connections</h3>
+
+
+
+<p class="wp-block-paragraph">The number of peering connections that can be made per VPC is limited (you can request limit increases, but it&#8217;s better to use peering judiciously).</p>
+
+
+
+<h3 class="wp-block-heading">Monitor Traffic and Set Alerts</h3>
+
+
+
+<p class="wp-block-paragraph">Continuously monitor the traffic flowing through your VPCs using services like VPC Flow Logs and CloudWatch. Set up alerts for any unusual activities.</p>
+
+
+
+<h3 class="wp-block-heading">Implement VPC Peering Connectivity in a Hub-and-Spoke Network Topology</h3>
+
+
+
+<p class="wp-block-paragraph">If you have many VPCs that need to communicate with each other, consider implementing a hub-and-spoke model. In this model, you have a central &#8216;hub&#8217; VPC that is peered with multiple &#8216;spoke&#8217; VPCs. This minimizes the total number of peering connections and simplifies network configuration.</p>
+
+
+
+<h3 class="wp-block-heading">Consider AWS Transit Gateway for Scalability</h3>
+
+
+
+<p class="wp-block-paragraph">If you have many VPCs (typically in the order of hundreds), it might be more efficient and easier to manage connections using <a href="https://aws.amazon.com/transit-gateway/" target="_blank" rel="noopener">AWS Transit Gateway</a> rather than setting up individual VPC Peering connections.</p>
+<div id="meopmbox" class="apbox"><h2>Recommended Tool: ManageEngine OpManager</h2>
+<a href="https://networkproguide.com/view/manageengine-opmanager-ap/" target="_blank" rel="nofollow noopener"><picture><source srcset="https://networkproguide.com/wp-content/uploads/opmss.webp "  type="image/webp"><img class="alignright size-full wp-image-1503343 sp-no-webp" src="https://networkproguide.com/wp-content/uploads/opmss.png" alt="" style="width:383px"></picture></a><ul><li>Multi-vendor Network Monitoring</li>
+<li>Simple Installation & Setup</li>
+<li>Intuitive UI</li>
+<li>Complete Visibility</li>
+<li>Intelligent Detections</li>
+<li>Easy Resolutions</li>
+<p style="text-align: center;"><a href="https://networkproguide.com/view/manageengine-opmanager-ap/" target="_blank" rel="nofollow noopener"><button class="cta">Try It Free Now</button></a></p></div></div><!-- .entry-content -->
+<footer class="entry-footer">
+	<div class="entry-tags">
+	<span class="tags-links">
+		<span class="tags-label screen-reader-text">
+			Post Tags:		</span>
+		<a href=https://networkproguide.com/tag/aws/ title="AWS" class="tag-link tag-item-aws" rel="tag"><span class="tag-hash">#</span>AWS</a><a href=https://networkproguide.com/tag/cloud/ title="Cloud" class="tag-link tag-item-cloud" rel="tag"><span class="tag-hash">#</span>Cloud</a><a href=https://networkproguide.com/tag/vpc/ title="VPC" class="tag-link tag-item-vpc" rel="tag"><span class="tag-hash">#</span>VPC</a>	</span>
+</div><!-- .entry-tags -->
+</footer><!-- .entry-footer -->
+	</div>
+</article><!-- #post-1001985 -->
+
+<div class="entry-author entry-author-style-center">
+	<div class="entry-author-profile author-profile vcard">
+		<div class="entry-author-avatar">
+			<picture><source srcset="https://networkproguide.com/wp-content/uploads/Default-Avatar.webp 2x"  type="image/webp"><img src="https://networkproguide.com/wp-content/uploads/Default-Avatar.png" srcset="https://networkproguide.com/wp-content/uploads/Default-Avatar.png 2x" width="80" height="80" alt="Avatar" class="avatar avatar-80 wp-user-avatar wp-user-avatar-80 photo avatar-default sp-no-webp"></picture>		</div>
+		<b class="entry-author-name author-name fn"><a href="https://networkproguide.com/author/akrur/" rel="author">Akrur Neupane</a></b>
+					<p class="entry-author-occupation author-occupation">Cloud Architect</p>
+				<div class="entry-author-description author-bio">
+			<p>I'm a Cloud Architect with experience in AWS services, Docker, Git, <a href="https://github.com/neupaneakrur" rel="noopener">Github</a> Actions, YAML, Ansible, Jenkins, Linux, and other DevOps tools. I specialize in building and managing scalable infrastructure solutions, automating processes, and implementing CI/CD practices.</p>
+		</div>
+		<div class="entry-author-follow author-follow">
+								<a href="https://www.linkedin.com/in/neupaneakrur/" class="linkedin-link social-button" target="_blank" rel="noopener" title="Follow Akrur Neupane on Linkedin">
+						<span class="kadence-svg-iconset"><svg class="kadence-svg-icon kadence-linkedin-svg" fill="currentColor" version="1.1" xmlns="http://www.w3.org/2000/svg" width="24" height="28" viewBox="0 0 24 28"><title>Linkedin</title><path d="M3.703 22.094h3.609v-10.844h-3.609v10.844zM7.547 7.906c-0.016-1.062-0.781-1.875-2.016-1.875s-2.047 0.812-2.047 1.875c0 1.031 0.781 1.875 2 1.875h0.016c1.266 0 2.047-0.844 2.047-1.875zM16.688 22.094h3.609v-6.219c0-3.328-1.781-4.875-4.156-4.875-1.937 0-2.797 1.078-3.266 1.828h0.031v-1.578h-3.609s0.047 1.016 0 10.844v0h3.609v-6.062c0-0.313 0.016-0.641 0.109-0.875 0.266-0.641 0.859-1.313 1.859-1.313 1.297 0 1.813 0.984 1.813 2.453v5.797zM24 6.5v15c0 2.484-2.016 4.5-4.5 4.5h-15c-2.484 0-4.5-2.016-4.5-4.5v-15c0-2.484 2.016-4.5 4.5-4.5h15c2.484 0 4.5 2.016 4.5 4.5z"></path>
+				</svg></span>					</a>
+							</div><!--.author-follow-->
+	</div>
+</div><!-- .entry-author -->
+<div id="comments" class="comments-area">
+		<div id="respond" class="comment-respond">
+		<h3 id="reply-title" class="comment-reply-title">Leave a Reply <small><a rel="nofollow" id="cancel-comment-reply-link" href="/create-aws-vpc-peering-connection/#respond" style="display:none;">Cancel reply</a></small></h3><form action="https://networkproguide.com/wp-comments-post.php" method="post" id="commentform" class="comment-form"><p class="comment-notes"><span id="email-notes">Your email address will not be published.</span> <span class="required-field-message">Required fields are marked <span class="required">*</span></span></p><p class="comment-form-comment comment-form-float-label"><textarea autocomplete="new-password"  id="h201a9f775"  name="h201a9f775"   placeholder="Leave a comment..." cols="45" rows="8" maxlength="65525" aria-required="true" required="required"></textarea><textarea id="comment" aria-label="hp-comment" aria-hidden="true" name="comment" autocomplete="new-password" style="padding:0 !important;clip:rect(1px, 1px, 1px, 1px) !important;position:absolute !important;white-space:nowrap !important;height:1px !important;width:1px !important;overflow:hidden !important;" tabindex="-1"></textarea><script data-noptimize>document.getElementById("comment").setAttribute( "id", "aae688fca315bcb38d18c4dbe101e926" );document.getElementById("h201a9f775").setAttribute( "id", "comment" );</script><label class="float-label" for="comment">Comment <span class="required">*</span></label></p><div class="comment-input-wrap no-url-field"><p class="comment-form-author"><input aria-label="Name" id="author" name="author" type="text" placeholder="John Doe" value="" size="30" maxlength="245" aria-required='true' required='required' /><label class="float-label" for="author">Name <span class="required">*</span></label></p>
+<p class="comment-form-email"><input aria-label="Email" id="email" name="email" type="email" placeholder="john@example.com" value="" size="30" maxlength="100" aria-describedby="email-notes" aria-required='true' required='required' /><label class="float-label" for="email">Email <span class="required">*</span></label></p>
+</div>
+<p class="comment-form-cookies-consent"><input id="wp-comment-cookies-consent" name="wp-comment-cookies-consent" type="checkbox" value="yes" /> <label for="wp-comment-cookies-consent">Save my name, email, and website in this browser for the next time I comment.</label></p>
+<p class="form-submit"><input name="submit" type="submit" id="submit" class="submit" value="Post Comment" /> <input type='hidden' name='comment_post_ID' value='1001985' id='comment_post_ID' />
+<input type='hidden' name='comment_parent' id='comment_parent' value='0' />
+</p></form>	</div><!-- #respond -->
+	</div><!-- #comments -->
+			</div>
+					</div><!-- #main -->
+		<aside id="secondary" role="complementary" class="primary-sidebar widget-area sidebar-slug-sidebar-primary sidebar-link-style-normal">
+	<div class="sidebar-inner-wrap">
+		<section id="block-38" class="widget widget_block"><h2 class="widget-title">Guide Tags</h2><div class="wp-widget-group__inner-blocks"><p style="line-height:1.6" class="is-style-default wp-block-tag-cloud"><a href="https://networkproguide.com/tag/9300/" class="tag-cloud-link tag-link-63 tag-link-position-1" style="font-size: 11.165048543689pt;" aria-label="9300 (3 items)">9300</a>
+<a href="https://networkproguide.com/tag/active-directory/" class="tag-cloud-link tag-link-24 tag-link-position-2" style="font-size: 18.349514563107pt;" aria-label="Active Directory (21 items)">Active Directory</a>
+<a href="https://networkproguide.com/tag/asa/" class="tag-cloud-link tag-link-64 tag-link-position-3" style="font-size: 13.592233009709pt;" aria-label="ASA (6 items)">ASA</a>
+<a href="https://networkproguide.com/tag/aws/" class="tag-cloud-link tag-link-200086 tag-link-position-4" style="font-size: 17.766990291262pt;" aria-label="AWS (18 items)">AWS</a>
+<a href="https://networkproguide.com/tag/cheat-sheet/" class="tag-cloud-link tag-link-100079 tag-link-position-5" style="font-size: 13.592233009709pt;" aria-label="Cheat Sheet (6 items)">Cheat Sheet</a>
+<a href="https://networkproguide.com/tag/cisco/" class="tag-cloud-link tag-link-6 tag-link-position-6" style="font-size: 20pt;" aria-label="Cisco (31 items)">Cisco</a>
+<a href="https://networkproguide.com/tag/cli/" class="tag-cloud-link tag-link-69 tag-link-position-7" style="font-size: 16.116504854369pt;" aria-label="CLI (12 items)">CLI</a>
+<a href="https://networkproguide.com/tag/cloud/" class="tag-cloud-link tag-link-200085 tag-link-position-8" style="font-size: 17.961165048544pt;" aria-label="Cloud (19 items)">Cloud</a>
+<a href="https://networkproguide.com/tag/command-prompt/" class="tag-cloud-link tag-link-36 tag-link-position-9" style="font-size: 15.825242718447pt;" aria-label="Command Prompt (11 items)">Command Prompt</a>
+<a href="https://networkproguide.com/tag/dns/" class="tag-cloud-link tag-link-40 tag-link-position-10" style="font-size: 12.912621359223pt;" aria-label="DNS (5 items)">DNS</a>
+<a href="https://networkproguide.com/tag/domain-controller/" class="tag-cloud-link tag-link-44 tag-link-position-11" style="font-size: 14.077669902913pt;" aria-label="Domain Controller (7 items)">Domain Controller</a>
+<a href="https://networkproguide.com/tag/ec2/" class="tag-cloud-link tag-link-200090 tag-link-position-12" style="font-size: 15.04854368932pt;" aria-label="EC2 (9 items)">EC2</a>
+<a href="https://networkproguide.com/tag/esxi/" class="tag-cloud-link tag-link-72 tag-link-position-13" style="font-size: 11.165048543689pt;" aria-label="ESXi (3 items)">ESXi</a>
+<a href="https://networkproguide.com/tag/f5-big-ip/" class="tag-cloud-link tag-link-100081 tag-link-position-14" style="font-size: 12.912621359223pt;" aria-label="F5 Big-IP (5 items)">F5 Big-IP</a>
+<a href="https://networkproguide.com/tag/firewalls/" class="tag-cloud-link tag-link-300097 tag-link-position-15" style="font-size: 14.563106796117pt;" aria-label="Firewalls (8 items)">Firewalls</a>
+<a href="https://networkproguide.com/tag/group-policy/" class="tag-cloud-link tag-link-37 tag-link-position-16" style="font-size: 12.912621359223pt;" aria-label="Group Policy (5 items)">Group Policy</a>
+<a href="https://networkproguide.com/tag/hyper-v/" class="tag-cloud-link tag-link-45 tag-link-position-17" style="font-size: 11.165048543689pt;" aria-label="Hyper-V (3 items)">Hyper-V</a>
+<a href="https://networkproguide.com/tag/ios/" class="tag-cloud-link tag-link-28 tag-link-position-18" style="font-size: 16.796116504854pt;" aria-label="IOS (14 items)">IOS</a>
+<a href="https://networkproguide.com/tag/ios-xe/" class="tag-cloud-link tag-link-200091 tag-link-position-19" style="font-size: 15.436893203883pt;" aria-label="IOS-XE (10 items)">IOS-XE</a>
+<a href="https://networkproguide.com/tag/ios-xr/" class="tag-cloud-link tag-link-200092 tag-link-position-20" style="font-size: 15.04854368932pt;" aria-label="IOS-XR (9 items)">IOS-XR</a>
+<a href="https://networkproguide.com/tag/ipv4/" class="tag-cloud-link tag-link-79 tag-link-position-21" style="font-size: 12.912621359223pt;" aria-label="ipv4 (5 items)">ipv4</a>
+<a href="https://networkproguide.com/tag/ise/" class="tag-cloud-link tag-link-7 tag-link-position-22" style="font-size: 15.04854368932pt;" aria-label="ISE (9 items)">ISE</a>
+<a href="https://networkproguide.com/tag/load-balancers/" class="tag-cloud-link tag-link-100082 tag-link-position-23" style="font-size: 14.563106796117pt;" aria-label="Load Balancers (8 items)">Load Balancers</a>
+<a href="https://networkproguide.com/tag/network-access-control/" class="tag-cloud-link tag-link-8 tag-link-position-24" style="font-size: 14.077669902913pt;" aria-label="Network Access Control (7 items)">Network Access Control</a>
+<a href="https://networkproguide.com/tag/network-analyzer/" class="tag-cloud-link tag-link-22 tag-link-position-25" style="font-size: 14.077669902913pt;" aria-label="Network Analyzer (7 items)">Network Analyzer</a>
+<a href="https://networkproguide.com/tag/packet-analyzer/" class="tag-cloud-link tag-link-23 tag-link-position-26" style="font-size: 13.592233009709pt;" aria-label="Packet Analyzer (6 items)">Packet Analyzer</a>
+<a href="https://networkproguide.com/tag/powershell/" class="tag-cloud-link tag-link-29 tag-link-position-27" style="font-size: 18.155339805825pt;" aria-label="PowerShell (20 items)">PowerShell</a>
+<a href="https://networkproguide.com/tag/rdp/" class="tag-cloud-link tag-link-16 tag-link-position-28" style="font-size: 10pt;" aria-label="RDP (2 items)">RDP</a>
+<a href="https://networkproguide.com/tag/routers/" class="tag-cloud-link tag-link-300094 tag-link-position-29" style="font-size: 14.563106796117pt;" aria-label="Routers (8 items)">Routers</a>
+<a href="https://networkproguide.com/tag/routing/" class="tag-cloud-link tag-link-33 tag-link-position-30" style="font-size: 12.912621359223pt;" aria-label="Routing (5 items)">Routing</a>
+<a href="https://networkproguide.com/tag/scripting/" class="tag-cloud-link tag-link-78 tag-link-position-31" style="font-size: 14.077669902913pt;" aria-label="Scripting (7 items)">Scripting</a>
+<a href="https://networkproguide.com/tag/solarwinds/" class="tag-cloud-link tag-link-31 tag-link-position-32" style="font-size: 12.912621359223pt;" aria-label="SolarWinds (5 items)">SolarWinds</a>
+<a href="https://networkproguide.com/tag/ssh/" class="tag-cloud-link tag-link-17 tag-link-position-33" style="font-size: 12.135922330097pt;" aria-label="SSH (4 items)">SSH</a>
+<a href="https://networkproguide.com/tag/switches/" class="tag-cloud-link tag-link-300095 tag-link-position-34" style="font-size: 15.04854368932pt;" aria-label="Switches (9 items)">Switches</a>
+<a href="https://networkproguide.com/tag/syslog/" class="tag-cloud-link tag-link-26 tag-link-position-35" style="font-size: 10pt;" aria-label="Syslog (2 items)">Syslog</a>
+<a href="https://networkproguide.com/tag/tacacs/" class="tag-cloud-link tag-link-27 tag-link-position-36" style="font-size: 12.912621359223pt;" aria-label="TACACS+ (5 items)">TACACS+</a>
+<a href="https://networkproguide.com/tag/vmware/" class="tag-cloud-link tag-link-14 tag-link-position-37" style="font-size: 12.135922330097pt;" aria-label="VMware (4 items)">VMware</a>
+<a href="https://networkproguide.com/tag/vpc/" class="tag-cloud-link tag-link-200087 tag-link-position-38" style="font-size: 15.825242718447pt;" aria-label="VPC (11 items)">VPC</a>
+<a href="https://networkproguide.com/tag/vsphere/" class="tag-cloud-link tag-link-15 tag-link-position-39" style="font-size: 11.165048543689pt;" aria-label="vSphere (3 items)">vSphere</a>
+<a href="https://networkproguide.com/tag/wifi/" class="tag-cloud-link tag-link-46 tag-link-position-40" style="font-size: 10pt;" aria-label="WIFI (2 items)">WIFI</a>
+<a href="https://networkproguide.com/tag/windows-10/" class="tag-cloud-link tag-link-19 tag-link-position-41" style="font-size: 18.349514563107pt;" aria-label="Windows 10 (21 items)">Windows 10</a>
+<a href="https://networkproguide.com/tag/windows-11/" class="tag-cloud-link tag-link-76 tag-link-position-42" style="font-size: 17.961165048544pt;" aria-label="Windows 11 (19 items)">Windows 11</a>
+<a href="https://networkproguide.com/tag/windows-server/" class="tag-cloud-link tag-link-300096 tag-link-position-43" style="font-size: 19.708737864078pt;" aria-label="Windows Server (29 items)">Windows Server</a>
+<a href="https://networkproguide.com/tag/wireshark/" class="tag-cloud-link tag-link-21 tag-link-position-44" style="font-size: 14.077669902913pt;" aria-label="Wireshark (7 items)">Wireshark</a>
+<a href="https://networkproguide.com/tag/wlc/" class="tag-cloud-link tag-link-47 tag-link-position-45" style="font-size: 10pt;" aria-label="WLC (2 items)">WLC</a></p></div></section><section id="block-91" class="widget widget_block widget_media_image">
+<figure class="wp-block-image size-full"><a href="https://networkproguide.com/view/manageengine-opmanager/" target="_blank" rel="nofollow noopener"><picture><source srcset="https://networkproguide.com/wp-content/uploads/meopms.webp 300w,https://networkproguide.com/wp-content/uploads/meopms-150x300.webp 150w" sizes="auto, (max-width: 300px) 100vw, 300px" type="image/webp"><img loading="lazy" decoding="async" width="300" height="600" src="https://networkproguide.com/wp-content/uploads/meopms.jpeg" alt="" class="wp-image-1503341 sp-no-webp" srcset="https://networkproguide.com/wp-content/uploads/meopms.jpeg 300w, https://networkproguide.com/wp-content/uploads/meopms-150x300.jpeg 150w" sizes="auto, (max-width: 300px) 100vw, 300px"></picture></a></figure>
+</section>	</div>
+</aside><!-- #secondary -->
+	</div>
+</div><!-- #primary -->
+	</main><!-- #inner-wrap -->
+	<footer id="colophon" class="site-footer" role="contentinfo">
+	<div class="site-footer-wrap">
+		<div class="site-middle-footer-wrap site-footer-row-container site-footer-focus-item site-footer-row-layout-standard site-footer-row-tablet-layout-default site-footer-row-mobile-layout-default" data-section="kadence_customizer_footer_middle">
+	<div class="site-footer-row-container-inner">
+				<div class="site-container">
+			<div class="site-middle-footer-inner-wrap site-footer-row site-footer-row-columns-4 site-footer-row-column-layout-left-forty site-footer-row-tablet-column-layout-default site-footer-row-mobile-column-layout-row ft-ro-dir-column ft-ro-collapse-normal ft-ro-t-dir-default ft-ro-m-dir-default ft-ro-lstyle-noline">
+									<div class="site-footer-middle-section-1 site-footer-section footer-section-inner-items-1">
+						<div class="footer-widget-area widget-area site-footer-focus-item footer-widget1 content-align-left content-tablet-align-default content-mobile-align-default content-valign-top content-tablet-valign-default content-mobile-valign-default" data-section="sidebar-widgets-footer1">
+	<div class="footer-widget-area-inner site-info-inner">
+		<section id="block-58" class="widget widget_block widget_media_image">
+<figure class="wp-block-image size-full is-resized"><picture><source srcset="https://networkproguide.com/wp-content/uploads/NPG-LOGO-600-80.webp 600w,https://networkproguide.com/wp-content/uploads/NPG-LOGO-600-80-300x40.webp 300w" sizes="auto, (max-width: 300px) 100vw, 300px" type="image/webp"><img loading="lazy" decoding="async" src="https://networkproguide.com/wp-content/uploads/NPG-LOGO-600-80.png" alt="NetworkProGuide brand logo" class="wp-image-501634 sp-no-webp" width="300" height="40" srcset="https://networkproguide.com/wp-content/uploads/NPG-LOGO-600-80.png 600w, https://networkproguide.com/wp-content/uploads/NPG-LOGO-600-80-300x40.png 300w" sizes="auto, (max-width: 300px) 100vw, 300px"></picture></figure>
+</section><section id="block-56" class="widget widget_block widget_text">
+<p class="wp-block-paragraph">NetworkProGuide is a free Information Technology resource site for Computer Networking professionals.</p>
+</section><section id="block-57" class="widget widget_block widget_text">
+<p class="wp-block-paragraph">We help network admins and engineers improve their skills and work more effectively through quality tips, tutorials, and resources.</p>
+</section>	</div>
+</div><!-- .footer-widget1 -->
+					</div>
+										<div class="site-footer-middle-section-2 site-footer-section footer-section-inner-items-1">
+						<div class="footer-widget-area widget-area site-footer-focus-item footer-widget2 content-align-left content-tablet-align-default content-mobile-align-default content-valign-default content-tablet-valign-default content-mobile-valign-default" data-section="sidebar-widgets-footer2">
+	<div class="footer-widget-area-inner site-info-inner">
+		<section id="block-31" class="widget widget_block"><h2 class="widget-title">Site Links</h2><div class="wp-widget-group__inner-blocks">
+<div class="wp-block-group"><div class="wp-block-group__inner-container is-layout-constrained wp-block-group-is-layout-constrained">
+<p class="wp-block-paragraph" style="line-height:1.9"><a href="https://networkproguide.com/about">About</a><br><a href="https://networkproguide.com/blog">Blog</a><br><a href="https://networkproguide.com/contact">Contact<br></a><a href="https://networkproguide.com/earnings-disclosure/">FTC Disclosure</a><br><a href="https://networkproguide.com/privacy-policy/">Privacy Policy</a><br><a href="https://networkproguide.com/terms-of-service/">Terms of Service</a></p>
+</div></div>
+</div></section>	</div>
+</div><!-- .footer-widget2 -->
+					</div>
+										<div class="site-footer-middle-section-3 site-footer-section footer-section-inner-items-1">
+						<div class="footer-widget-area widget-area site-footer-focus-item footer-widget4 content-align-default content-tablet-align-default content-mobile-align-default content-valign-default content-tablet-valign-default content-mobile-valign-default" data-section="sidebar-widgets-footer4">
+	<div class="footer-widget-area-inner site-info-inner">
+		<section id="block-76" class="widget widget_block"><h2 class="widget-title">Channels</h2><div class="wp-widget-group__inner-blocks">
+<div class="wp-block-group"><div class="wp-block-group__inner-container is-layout-constrained wp-block-group-is-layout-constrained">
+<p class="wp-block-paragraph" style="line-height:1.9"><a rel="noopener" href="https://www.facebook.com/networkproguide" target="_blank">Facebook</a><br><a rel="noopener" href="https://mastodon.social/@networkproguide" target="_blank">Mastodon</a><br><a rel="noopener" href="https://networkproguide.com/feed/" target="_blank">RSS</a></p>
+</div></div>
+</div></section>	</div>
+</div><!-- .footer-widget4 -->
+					</div>
+										<div class="site-footer-middle-section-4 site-footer-section footer-section-inner-items-1">
+						<div class="footer-widget-area widget-area site-footer-focus-item footer-widget3 content-align-left content-tablet-align-default content-mobile-align-default content-valign-default content-tablet-valign-default content-mobile-valign-default" data-section="sidebar-widgets-footer3">
+	<div class="footer-widget-area-inner site-info-inner">
+		<section id="block-33" class="widget widget_block"><h2 class="widget-title">Copyright</h2><div class="wp-widget-group__inner-blocks">
+<div class="wp-block-group"><div class="wp-block-group__inner-container is-layout-constrained wp-block-group-is-layout-constrained">
+<a href="//www.dmca.com/Protection/Status.aspx?ID=59381d0b-6ff0-4851-8809-ede33d0a7e57" title="DMCA.com Protection Status" class="dmca-badge"> <img loading="lazy" decoding="async" src="//images.dmca.com/Badges/dmca-badge-w150-5x1-10.png?ID=59381d0b-6ff0-4851-8809-ede33d0a7e57" alt="DMCA.com Protection Status" width="150" height="30"></a> <script src="//images.dmca.com/Badges/DMCABadgeHelper.min.js"> </script>
+</div></div>
+</div></section>	</div>
+</div><!-- .footer-widget3 -->
+					</div>
+								</div>
+		</div>
+	</div>
+</div>
+<div class="site-bottom-footer-wrap site-footer-row-container site-footer-focus-item site-footer-row-layout-standard site-footer-row-tablet-layout-default site-footer-row-mobile-layout-default" data-section="kadence_customizer_footer_bottom">
+	<div class="site-footer-row-container-inner">
+				<div class="site-container">
+			<div class="site-bottom-footer-inner-wrap site-footer-row site-footer-row-columns-1 site-footer-row-column-layout-row site-footer-row-tablet-column-layout-default site-footer-row-mobile-column-layout-row ft-ro-dir-row ft-ro-collapse-normal ft-ro-t-dir-default ft-ro-m-dir-default ft-ro-lstyle-plain">
+									<div class="site-footer-bottom-section-1 site-footer-section footer-section-inner-items-1">
+						
+<div class="footer-widget-area site-info site-footer-focus-item content-align-center content-tablet-align-default content-mobile-align-default content-valign-top content-tablet-valign-default content-mobile-valign-default" data-section="kadence_customizer_footer_html">
+	<div class="footer-widget-area-inner site-info-inner">
+		<div class="footer-html inner-link-style-normal"><div class="footer-html-inner"><p>&copy; 2026 NetworkProGuide.com. All rights reserved. Hosted by <a href="https://networkproguide.com/view/wpx-hosting/">WPX</a>.</p>
+</div></div>	</div>
+</div><!-- .site-info -->
+					</div>
+								</div>
+		</div>
+	</div>
+</div>
+	</div>
+</footer><!-- #colophon -->
+
+</div><!-- #wrapper -->
+
+			<script>document.documentElement.style.setProperty('--scrollbar-offset', window.innerWidth - document.documentElement.clientWidth + 'px' );</script>
+			<script type="speculationrules">
+{"prefetch":[{"source":"document","where":{"and":[{"href_matches":"/*"},{"not":{"href_matches":["/wp-*.php","/wp-admin/*","/wp-content/uploads/*","/wp-content/*","/wp-content/plugins/*","/wp-content/themes/NetworkProGuide/*","/wp-content/themes/kadence/*","/*\\?(.+)"]}},{"not":{"selector_matches":"a[rel~=\"nofollow\"]"}},{"not":{"selector_matches":".no-prefetch, .no-prefetch a"}}]},"eagerness":"conservative"}]}
+</script>
+<div class="a2a_kit a2a_kit_size_32 a2a_floating_style a2a_vertical_style" style="left:0px;top:400px;background-color:transparent"><a class="a2a_button_linkedin" href="https://www.addtoany.com/add_to/linkedin?linkurl=https%3A%2F%2Fnetworkproguide.com%2Fcreate-aws-vpc-peering-connection%2F&amp;linkname=How%20to%20Create%20AWS%20VPC%20Peering%20Connection%20Step-by-Step%20%7C%20NetworkProGuide" title="LinkedIn" rel="nofollow noopener" target="_blank"></a><a class="a2a_button_reddit" href="https://www.addtoany.com/add_to/reddit?linkurl=https%3A%2F%2Fnetworkproguide.com%2Fcreate-aws-vpc-peering-connection%2F&amp;linkname=How%20to%20Create%20AWS%20VPC%20Peering%20Connection%20Step-by-Step%20%7C%20NetworkProGuide" title="Reddit" rel="nofollow noopener" target="_blank"></a><a class="a2a_button_mastodon" href="https://www.addtoany.com/add_to/mastodon?linkurl=https%3A%2F%2Fnetworkproguide.com%2Fcreate-aws-vpc-peering-connection%2F&amp;linkname=How%20to%20Create%20AWS%20VPC%20Peering%20Connection%20Step-by-Step%20%7C%20NetworkProGuide" title="Mastodon" rel="nofollow noopener" target="_blank"></a><a class="a2a_button_threads" href="https://www.addtoany.com/add_to/threads?linkurl=https%3A%2F%2Fnetworkproguide.com%2Fcreate-aws-vpc-peering-connection%2F&amp;linkname=How%20to%20Create%20AWS%20VPC%20Peering%20Connection%20Step-by-Step%20%7C%20NetworkProGuide" title="Threads" rel="nofollow noopener" target="_blank"></a><a class="a2a_button_facebook" href="https://www.addtoany.com/add_to/facebook?linkurl=https%3A%2F%2Fnetworkproguide.com%2Fcreate-aws-vpc-peering-connection%2F&amp;linkname=How%20to%20Create%20AWS%20VPC%20Peering%20Connection%20Step-by-Step%20%7C%20NetworkProGuide" title="Facebook" rel="nofollow noopener" target="_blank"></a><a class="a2a_dd addtoany_share_save addtoany_share" href="https://www.addtoany.com/share"></a></div><div id="grow-wp-data" data-grow="{&quot;content&quot;:{&quot;ID&quot;:1001985,&quot;categories&quot;:[{&quot;ID&quot;:4}]}}"></div>	<div id="mobile-drawer" class="popup-drawer popup-drawer-layout-sidepanel popup-drawer-animation-fade popup-drawer-side-right" data-drawer-target-string="#mobile-drawer"
+			>
+		<div class="drawer-overlay" data-drawer-target-string="#mobile-drawer"></div>
+		<div class="drawer-inner">
+						<div class="drawer-header">
+				<button class="menu-toggle-close drawer-toggle" aria-label="Close menu"  data-toggle-target="#mobile-drawer" data-toggle-body-class="showing-popup-drawer-from-right" aria-expanded="false" data-set-focus=".menu-toggle-open"
+							>
+					<span class="toggle-close-bar"></span>
+					<span class="toggle-close-bar"></span>
+				</button>
+			</div>
+			<div class="drawer-content mobile-drawer-content content-align-left content-valign-top">
+								<div class="site-header-item site-header-focus-item site-header-item-mobile-navigation mobile-navigation-layout-stretch-false" data-section="kadence_customizer_mobile_navigation">
+		<nav id="mobile-site-navigation" class="mobile-navigation drawer-navigation drawer-navigation-parent-toggle-false" role="navigation" aria-label="Primary Mobile">
+				<div class="mobile-menu-container drawer-menu-container">
+			<ul id="mobile-menu" class="menu has-collapse-sub-nav"><li class="menu-item menu-item-type-taxonomy menu-item-object-category current-post-ancestor current-menu-parent current-post-parent menu-item-519"><a href="https://networkproguide.com/category/networking/">Networking</a></li>
+<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-1196"><a href="https://networkproguide.com/category/network-security/">Network Security</a></li>
+<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-520"><a href="https://networkproguide.com/category/system-administration/">SysAdmin</a></li>
+<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-521"><a href="https://networkproguide.com/category/virtualization/">Virtualization</a></li>
+<li class="menu-item menu-item-type-taxonomy menu-item-object-post_tag menu-item-501679"><a href="https://networkproguide.com/tag/cheat-sheet/">Cheat Sheets</a></li>
+</ul>		</div>
+	</nav><!-- #site-navigation -->
+	</div><!-- data-section="mobile_navigation" -->
+							</div>
+		</div>
+	</div>
+	<script data-grow-initializer="">!(function(){window.growMe||((window.growMe=function(e){window.growMe._.push(e);}),(window.growMe._=[]));var e=document.createElement("script");(e.type="text/javascript"),(e.src="https://faves.grow.me/main.js"),(e.defer=!0),e.setAttribute("data-grow-faves-site-id","U2l0ZTozMjAxMTYwMS0wZDEzLTQ4YjItODRkZC1kZmFhNTA2MTNlM2Y=");var t=document.getElementsByTagName("script")[0];t.parentNode.insertBefore(e,t);})();</script><script id="ta_main_js-js-extra">
+var thirsty_global_vars = {"home_url":"//networkproguide.com","ajax_url":"https://networkproguide.com/wp-admin/admin-ajax.php","link_fixer_enabled":"yes","link_prefix":"view","link_prefixes":{"0":"recommends","5":"view"},"post_id":"1001985","enable_record_stats":"yes","enable_js_redirect":"","disable_thirstylink_class":""};
+//# sourceURL=ta_main_js-js-extra
+</script>
+<script data-optimized="1" id="ta_main_js-js" src="https://networkproguide.com/wp-content/litespeed/js/840367b484071a63d698dad8ba6f82ab.js?ver=0fdf7"></script>
+<script data-optimized="1" async data-wp-strategy="async" fetchpriority="low" id="comment-reply-js" src="https://networkproguide.com/wp-content/litespeed/js/21b2899f8969b1c4969169b62410caa8.js?ver=7d4ce"></script>
+<script id="kadence-navigation-js-extra">
+var kadenceConfig = {"screenReader":{"expand":"Child menu","expandOf":"Child menu of","collapse":"Child menu","collapseOf":"Child menu of"},"breakPoints":{"desktop":"1024","tablet":768},"scrollOffset":"0"};
+//# sourceURL=kadence-navigation-js-extra
+</script>
+<script data-optimized="1" id="kadence-navigation-js" src="https://networkproguide.com/wp-content/litespeed/js/2f57037f550db50a0b0a6ef30b1c6a80.js?ver=910dc" async></script>
+	<div id="search-drawer" aria-modal="true" role="dialog" aria-label="Search" class="popup-drawer popup-drawer-layout-fullwidth" data-drawer-target-string="#search-drawer"
+			>
+		<div class="drawer-overlay" data-drawer-target-string="#search-drawer"></div>
+		<div class="drawer-inner">
+			<div class="drawer-header">
+				<button class="search-toggle-close drawer-toggle" aria-label="Close search"  data-toggle-target="#search-drawer" data-toggle-body-class="showing-popup-drawer-from-full" data-set-focus=".search-toggle-open"
+							>
+					<span class="kadence-svg-iconset"><svg class="kadence-svg-icon kadence-close-svg" fill="currentColor" version="1.1" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><title>Toggle Menu Close</title><path d="M5.293 6.707l5.293 5.293-5.293 5.293c-0.391 0.391-0.391 1.024 0 1.414s1.024 0.391 1.414 0l5.293-5.293 5.293 5.293c0.391 0.391 1.024 0.391 1.414 0s0.391-1.024 0-1.414l-5.293-5.293 5.293-5.293c0.391-0.391 0.391-1.024 0-1.414s-1.024-0.391-1.414 0l-5.293 5.293-5.293-5.293c-0.391-0.391-1.024-0.391-1.414 0s-0.391 1.024 0 1.414z"></path>
+				</svg></span>				</button>
+			</div>
+			<div class="drawer-content">
+				<form role="search" method="get" class="search-form" action="https://networkproguide.com/">
+				<label>
+					<span class="screen-reader-text">Search for:</span>
+					<input type="search" class="search-field" placeholder="Search &hellip;" value="" name="s" />
+				</label>
+				<input type="submit" class="search-submit" value="Search" />
+			<div class="kadence-search-icon-wrap"><span class="kadence-svg-iconset"><svg aria-hidden="true" class="kadence-svg-icon kadence-search-svg" fill="currentColor" version="1.1" xmlns="http://www.w3.org/2000/svg" width="26" height="28" viewBox="0 0 26 28"><title>Search</title><path d="M18 13c0-3.859-3.141-7-7-7s-7 3.141-7 7 3.141 7 7 7 7-3.141 7-7zM26 26c0 1.094-0.906 2-2 2-0.531 0-1.047-0.219-1.406-0.594l-5.359-5.344c-1.828 1.266-4.016 1.937-6.234 1.937-6.078 0-11-4.922-11-11s4.922-11 11-11 11 4.922 11 11c0 2.219-0.672 4.406-1.937 6.234l5.359 5.359c0.359 0.359 0.578 0.875 0.578 1.406z"></path>
+				</svg></span></div></form>			</div>
+		</div>
+	</div>
+	</body>
+</html>
+
+
+<!-- Page cached by LiteSpeed Cache 7.9.2 on 2026-10-24 02:55:54 -->
